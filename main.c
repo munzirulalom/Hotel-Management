@@ -10,21 +10,80 @@ struct user
     char address[100];
     char nationality[20];
 };
-
+int dinner_food_list()
+{
+    system("CLS");
+    printf("Dinner Food List");
+    getch();
+    user_menu();
+}
+int snacks_food_list()
+{
+    system("CLS");
+    printf("Snacks Food List");
+    getch();
+    user_menu();
+}
+int lunch_food_list()
+{
+    system("CLS");
+    printf("Lunch Food List");
+    getch();
+    user_menu();
+}
+int breakfast_food_list()
+{
+    system("CLS");
+    printf("Breakfast Food List");
+    getch();
+    user_menu();
+}
 int food_menu()
 {
+    system("CLS");
+    int fm;
+    printf("1. Breakfast\n2. Lunch\n3. Snacks\n4. Dinner\n5. Food Menu\n6. Main Menu\n");
+    printf("Enter Choice: "); scanf("%d", &fm);
+    switch (fm)
+    {
+    case 1:
+        breakfast_food_list();
+        break;
+    case 2:
+        lunch_food_list();
+        break;
+    case 3:
+        snacks_food_list();
+        break;
+    case 4:
+        dinner_food_list();
+        break;
+    case 5:
+        food_menu();
+        break;
+    case 6:
+        user_menu();
+        break;
+    default:
+        printf("Invalid Input! [Food Menu]");
 
+    }
 }
 
 int ac_room_list()
 {
     system("CLS");
     printf("AC Room List");
+    getch();
+    user_menu();
 }
 
 int non_ac_room_list()
 {
-
+    system("CLS");
+    printf("AC Room List");
+    getch();
+    user_menu();
 }
 
 int room_menu()
@@ -128,7 +187,6 @@ int registation()
     system("CLS");
     user_login();
 }
-
 
 
 int main()
