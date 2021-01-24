@@ -20,21 +20,73 @@ int dinner_food_list()
 int snacks_food_list()
 {
     system("CLS");
-    printf("Snacks Food List");
+    printf("                     ######  ###    ##     ##       #####   ##   ##   ######    \n");
+    printf("                    #        ## #   ##    ####     ##    #  ## ##    #          \n");
+    printf("                     #####   ##  #  ##   ##  ##    ##       ###       #####     \n");
+    printf("                          #  ##   # ##  ## ## ##   ##    #  ## ##          #    \n");
+    printf("                    ######   ##    ### ##      ##   #####   ##   ##  ######     \n\n");
+    printf("###############################################################################################################\n\n");
+    printf("\t\t##      Name        ##      Price       ##\n" );
+    printf("\t\t------------------------------------------\n" );
+    printf("\t\t1.      Berger          --  250 tk      ##\n" );
+    printf("\t\t2.      Sandwich        --  180 tk      ##\n" );
+    printf("\t\t3.      Beef Stick      --  350 tk      ##\n" );
+    printf("\t\t4.      Nachos          --  200 tk      ##\n" );
+    printf("\t\t5.      Sicilian Pizza  --  550 tk      ##\n" );
+    printf("\t\t6.      Mango Juces     --  80  tk      ##\n" );
+    printf("\t\t7.      Chicken Fry     --  450 tk      ##\n" );
+    printf("\t\t8.      Water 1 Lt.     --  50  tk      ##\n" );
+    printf("\t\t9.      Water 2 Lt.     --  95  tk      ##\n" );
+
     getch();
-    user_menu();
+    food_menu();
 }
 int lunch_food_list()
 {
     system("CLS");
-    printf("Lunch Food List");
+    printf("                    ##       ##   ##  ###    ##   #####   ##    ##  \n");
+    printf("                    ##       ##   ##  ## #   ##  ##    #  ##    ##  \n");
+    printf("                    ##       ##   ##  ##  #  ##  ##       ########  \n");
+    printf("                    ##    #  ##   ##  ##   # ##  ##    #  ##    ##  \n");
+    printf("                    ######    #####   ##    ###   #####   ##    ##  \n\n");
+    printf("###############################################################################################################\n\n");
+    printf("\t\t##      Name        ##      Price       ##\n" );
+    printf("\t\t------------------------------------------\n" );
+    printf("\t\t1.      Rice        --      60  tk      ##\n" );
+    printf("\t\t2.      Fried Rice  --      250 tk      ##\n" );
+    printf("\t\t3.      Beef        --      360 tk      ##\n" );
+    printf("\t\t4.      Mutton      --      450 tk      ##\n" );
+    printf("\t\t5.      Pulses      --      40  tk      ##\n" );
+    printf("\t\t6.      Kabab       --      160 tk      ##\n" );
+    printf("\t\t7.      Fish        --      250 tk      ##\n" );
+    printf("\t\t8.      Vegetable   --      50  tk      ##\n" );
+    printf("\t\t9.      Chicken     --      280 tk      ##\n" );
     getch();
-    user_menu();
+    food_menu();
 }
 int breakfast_food_list()
 {
     system("CLS");
-    printf("Breakfast Food List");
+    printf("            #####   #####   #####      ##       #####   ##   ##  #####     ##      #####   ######## \n");
+    printf("            ##  ##  ##  ##  ##        ####     ##    #  ## ##    ##       ####    #           ##    \n");
+    printf("            #####   #####   #####    ##  ##    ##       ###      #####   ##  ##    #####      ##    \n");
+    printf("            ##  ##  ## ##   ##      ## ## ##   ##    #  ## ##    ##     ## ## ##        #     ##    \n");
+    printf("            #####   ##  ##  #####  ##      ##   #####   ##   ##  ##    ##      ##  #####      ##    \n\n");
+    printf("###############################################################################################################\n\n");
+    printf("\t\t##      Name        ##      Price       ##\n" );
+    printf("\t\t------------------------------------------\n" );
+    printf("\t\t1.      Bread       --      100 tk      ##\n" );
+    printf("\t\t2.      Eggs        --      60  tk      ##\n" );
+    printf("\t\t3.      Coffee      --      200 tk      ##\n" );
+    printf("\t\t4.      Green Tea   --      150 tk      ##\n" );
+    printf("\t\t5.      Normal Tea  --      80  tk      ##\n" );
+    printf("\t\t6.      Nuts        --      500 tk      ##\n" );
+    printf("\t\t7.      Nun Bread   --      70  tk      ##\n" );
+    printf("\t\t8.      Vegetable   --      50  tk      ##\n" );
+
+    getch();
+    food_menu();
+
     getch();
     user_menu();
 }
