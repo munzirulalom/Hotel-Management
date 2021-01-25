@@ -1,0 +1,2 @@
+Room No: 205	|	Room Name: Room_1	|	Room Features: Wifi,TV,AC,Swiming	|	Room Type: 1	|	Room Price: 8000
+Room No: 206	|	Room Name: Room_2	|	Room Features: Wifi,TV,AC	|	Room Type: 1	|	Room Price: 6000

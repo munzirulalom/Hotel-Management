@@ -1,0 +1,2 @@
+Food Code: F25C	|	Food Name: Food_1	|	Food Discreption: Description_1	|	Food Price: 120 tk
+Food Code: F26C	|	Food Name: Food_2	|	Food Discreption: Dwscription_2	|	Food Price: 165 tk
