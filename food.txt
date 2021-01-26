@@ -1,2 +1,12 @@
 Food Code: F25C	|	Food Name: Food_1	|	Food Discreption: Description_1	|	Food Price: 120 tk
-Food Code: F26C	|	Food Name: Food_2	|	Food Discreption: Dwscription_2	|	Food Price: 165 tk
+Food Code: F26C	|	Food Name: Food_2	|	Food Discreption: Description_2	|	Food Price: 165 tk
+Food Code: F27C	|	Food Name: Food_3	|	Food Discreption: Description_3	|	Food Price: 250	tk
+Food Code: F28C	|	Food Name: Food_4	|	Food Discreption: Description_4	|	Food Price: 180 tk
+Food Code: F29C	|	Food Name: Food_5	|	Food Discreption: Description_5	|	Food Price: 360 tk
+Food Code: F30C	|	Food Name: Food_6	|	Food Discreption: Description_6	|	Food Price: 100 tk
+Food Code: F31C	|	Food Name: Food_7	|	Food Discreption: Description_7	|	Food Price: 380 tk
+Food Code: F32C	|	Food Name: Food_8	|	Food Discreption: Description_8	|	Food Price: 150 tk
+Food Code: F33C	|	Food Name: Food_9	|	Food Discreption: Description_9	|	Food Price: 115 tk
+Food Code: F34C	|	Food Name: Food_10	|	Food Discreption: Description_10|	Food Price: 210 tk
+Food Code: F35C	|	Food Name: Food_11	|	Food Discreption: Description_11|	Food Price: 200 tk
+Food Code: F36C	|	Food Name: Food_12	|	Food Discreption: Description_12|	Food Price: 198 tk

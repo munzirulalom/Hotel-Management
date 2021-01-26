@@ -1,0 +1,30 @@
+		:::::: Admin Panel :::::
+Hotels Name
+Location
+Transport Service
+Room Bookiing
+Food Booking
+User Section
+Empoley Section
+Payment
+Contact
+
+
+		:::::: User Panel ::::::
+Login
+Registation
+User Section
+Location
+Hotels Name => Hotel Name
+Transport Service
+Room Bookiing
+Food Booking => Hotel, External
+Payment
+
+		:::::: Empoley Panel ::::::
+
+Name
+Regnetation
+Salary
+Address
+

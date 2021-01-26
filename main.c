@@ -1,5 +1,7 @@
 #include<stdio.h>
 #include<conio.h>
+#include <stdlib.h>
+
 struct admin
 {
     char username[50];
@@ -45,6 +47,40 @@ struct payment
     int code;
     char expire;
 };
+int contact()
+{
+    system("CLS");
+    printf("\n\n\n");
+    printf("\t\t\t::::: Hotel Management System :::::\n\n");
+    printf("\t\tName: Demo\tID: 123456789\tEmail: asd@aksf.com\n");
+    printf("\t\tName: Demo\tID: 123456789\tEmail: asd@aksf.com\n");
+    printf("\t\tName: Demo\tID: 123456789\tEmail: asd@aksf.com\n");
+
+    getch();
+    main_menu(1);
+}
+int print_file(FILE *fptr)
+{
+    char ch;
+
+    while((ch = fgetc(fptr)) != EOF)
+        putchar(ch);
+}
+
+
+int delete_file_row(FILE *main_file, FILE *temp_file, const int delete_line)
+{
+    char buffer[255];
+    int count = 1;
+
+    while ((fgets(buffer, 255, main_file)) != NULL)
+    {
+        if (delete_line != count)
+            fputs(buffer, temp_file);
+
+        count++;
+    }
+}
 
 //Food list
 int food_list()
@@ -64,9 +100,6 @@ int food_list()
         fputs("\n\n", stdout);
     }
      fclose(fp);
-
-     getch();
-     main_menu(1);
 }
 
 //Admin Food Add Function
@@ -108,9 +141,90 @@ int room_list()
         fputs("\n\n", stdout);
     }
      fclose(fp);
+}
 
-     getch();
-     main_menu(1);
+int delete_food()
+{
+    FILE *main_file;
+    FILE *temp_file;
+
+    char filename[100]="food.txt";
+    int delete_line;
+
+    main_file  = fopen(filename, "r");
+    temp_file = fopen("temp-file.tmp", "w");
+
+    if (main_file == NULL || temp_file == NULL)
+    {
+        printf("Unable to open file.\n");
+        printf("Please check you have read/write previleges.\n");
+
+        exit(EXIT_FAILURE);
+    }
+
+    printf("File contents before removing.\n\n");
+    print_file(main_file);
+
+    printf("Delete Food Row: ");
+    scanf("%d", &delete_line);
+
+    rewind(main_file);
+
+    delete_file_row(main_file, temp_file, delete_line);
+
+    fclose(main_file);
+    fclose(temp_file);
+
+    remove(filename);
+    rename("temp-file.tmp", filename);
+
+    printf("\n\Food Lists after removing %d Row.\n\n", delete_line);
+    main_file = fopen(filename, "r");
+    print_file(main_file);
+
+    fclose(main_file);
+}
+
+int delete_room()
+{
+    FILE *main_file;
+    FILE *temp_file;
+
+    char filename[100]="room.txt";
+    int delete_line;
+
+    main_file  = fopen(filename, "r");
+    temp_file = fopen("temp-file.tmp", "w");
+
+    if (main_file == NULL || temp_file == NULL)
+    {
+        printf("Unable to open file.\n");
+        printf("Please check you have read/write previleges.\n");
+
+        exit(EXIT_FAILURE);
+    }
+
+    printf("File contents before removing.\n\n");
+    print_file(main_file);
+
+    printf("Delete Room Row: ");
+    scanf("%d", &delete_line);
+
+    rewind(main_file);
+
+    delete_file_row(main_file, temp_file, delete_line);
+
+    fclose(main_file);
+    fclose(temp_file);
+
+    remove(filename);
+    rename("temp-file.tmp", filename);
+
+    printf("\n\nRoom Lists after removing %d Row.\n\n", delete_line);
+    main_file = fopen(filename, "r");
+    print_file(main_file);
+
+    fclose(main_file);
 }
 
 //Admin Room Add Function
@@ -139,6 +253,7 @@ int add_room()
 //Admin Food Menu
 int admin_food_menu()
 {
+    system("CLS");
     int N;
 
     printf("1. Add Food\n2. Food List\n3. Delete Food\n4. Main Menu\n\n");
@@ -149,15 +264,20 @@ int admin_food_menu()
     case 1:
         system("CLS");
         add_food();
+        getch();
+        admin_food_menu();
         break;
     case 2:
         system("CLS");
         food_list();
+        getch();
+        admin_food_menu();
         break;
     case 3:
-        printf("Delete Food Function");
+        system("CLS");
+        delete_food();
         getch();
-        main_menu(1);
+        admin_food_menu();
         break;
     case 4:
         main_menu(1);
@@ -170,6 +290,7 @@ int admin_food_menu()
 //Admin Room Menu
 int admin_room_menu()
 {
+    system("CLS");
     int N;
 
     printf("1. Add Room\n2. Room List\n3. Delete Room\n4. Main Menu\n\n");
@@ -180,15 +301,20 @@ int admin_room_menu()
     case 1:
         system("CLS");
         add_room();
+        getch();
+        admin_room_menu();
         break;
     case 2:
         system("CLS");
         room_list();
+        getch();
+        admin_room_menu();
         break;
     case 3:
-        printf("Delete Room Function");
+        system("CLS");
+        delete_room();
         getch();
-        main_menu(1);
+        admin_room_menu();
         break;
     case 4:
         main_menu(1);
@@ -631,31 +757,55 @@ int main_menu(int i)
     {
         int N;
         printf("        ## Admin Menu ##\n\n");
-        printf("1. Order List\n2. Room\n3. Food\n4. Hotel Feature\n5. Logout\n\n");
+        //printf("1. Order List\n2. Room\n3. Food\n4. Hotel Feature\n5. Hotel Name\n6. Location\n7. Transport\n8. User\n9. Employ\n10. Payment\n11. Contact\n\n");
+        printf("1. Hotel Name\n2. Hotel Features\n3. Location\n4. Transport\n5. Order\n6. Room\n7. Food\n8. Employ\n9. User\n10. Payment\n11. Contact\n\n");
         printf("Enter Choice: ");scanf("%d", &N);
 
         switch(N)
         {
         case 1:
-            printf("Order List Function");
+            printf("Hotel Name Function");
             getch();
             main_menu(1);
             break;
         case 2:
             system("CLS");
-            admin_room_menu();
-            break;
-        case 3:
-            system("CLS");
-            admin_food_menu();
-            break;
-        case 4:
-            system("CLS");
             hotel_features();
             break;
+        case 3:
+            printf("Location Function......");
+            getch();
+            main_menu(1);
+            break;
+        case 4:
+            printf("Transport Function.....");
+            getch();
+            main_menu(1);
+            break;
         case 5:
-            system("CLS");
-            main();
+            printf("Order Function....");
+            getch();
+            main_menu(1);
+            break;
+        case 6:
+            admin_room_menu();
+            break;
+        case 7:
+            admin_food_menu();
+            break;
+        case 8:
+            printf("Employ Function.....");
+            getch();
+            main_menu(1);
+            break;
+        case 9:
+            printf("User Function.....");
+            break;
+        case 10:
+            printf("Payment Function.....");
+            break;
+        case 11:
+            contact();
             break;
         default:
             printf("Error: Invalid input...");
@@ -701,8 +851,50 @@ int main_menu(int i)
 int main()
 {
     int n;
-    printf("1. User System\n2. Admin System\n\n");
-    printf("Enter your choice: "); scanf("%d", &n);
+    /*
+    printf("\t\t\t:::::::::::::::::::::::::::::::::::::::::::::\n");
+    printf("\t\t\t:::::::::::::::::::::::::::::::::::::::::::::\n");
+    printf("\t\t\t::                                         ::\n");
+    printf("\t\t\t::                                         ::\n");
+    printf("\t\t\t:::::::::: Hotel Management System ::::::::::\n");
+    printf("\t\t\t::                                         ::\n");
+    printf("\t\t\t::                                         ::\n");
+    printf("\t\t\t:::::::::::::::::::::::::::::::::::::::::::::\n");
+    printf("\t\t\t:::::::::::::::::::::::::::::::::::::::::::::\n\n\n");
+
+    printf("\t\t\t\t1. User System\n\t\t\t\t2. Admin System\n\n");
+    printf("\t\t\t\tEnter your choice: "); scanf("%d", &n);*/
+
+    int x; double y;
+    char text1[]=    "\t\t\t:::::::::::::::::::::::::::::::::::::::::::::\n\t\t\t:::::::::::::::::::::::::::::::::::::::::::::\n\t\t\t::                                         ::\n\t\t\t::                                         ::\n\t\t\t:::::::::: Hotel Management System ::::::::::\n\t\t\t::                                         ::\n\t\t\t::                                         ::\n\t\t\t:::::::::::::::::::::::::::::::::::::::::::::\n\t\t\t:::::::::::::::::::::::::::::::::::::::::::::\n\n\n";
+    char text2[]=    "\t\t\t\t1. User System\n\t\t\t\t2. Admin System\n\n";
+    char text3[]=    "\t\t\t\tEnter your choice: ";
+    printf("\n\n");
+    for(x=0; text1[x]!=NULL; x++)
+    {
+        printf("%c",text1[x]);
+        for(y=0; y<=1111111; y++)
+        {
+        }
+    }
+    printf("\n\n");
+    for(x=0; text2[x]!=NULL; x++)
+    {
+        printf("%c",text2[x]);
+        for(y=0; y<=4444444; y++)
+        {
+        }
+    }
+    printf("\n\n");
+    for(x=0; text3[x]!=NULL; x++)
+    {
+        printf("%c",text3[x]);
+        for(y=0; y<=9999999; y++)
+        {
+        }
+    }
+    scanf("%d", &n);
+
     system("CLS");
     if(n==1)
     {
