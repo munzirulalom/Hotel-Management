@@ -1,0 +1,5 @@
+Check ID Date(D-M-Y)	: 25-2-21
+Check Out Date	: 29-2-21
+Rooms		: 2
+Adults		: 1
+Children	: 0

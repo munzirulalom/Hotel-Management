@@ -52,13 +52,15 @@ int contact()
     system("CLS");
     printf("\n\n\n");
     printf("\t\t\t::::: Hotel Management System :::::\n\n");
-    printf("\t\tName: Demo\tID: 123456789\tEmail: asd@aksf.com\n");
-    printf("\t\tName: Demo\tID: 123456789\tEmail: asd@aksf.com\n");
-    printf("\t\tName: Demo\tID: 123456789\tEmail: asd@aksf.com\n");
+    printf("\t\tName: D.M. Ajmain Shariar\tID: 19202103308\t\tEmail: ajmainshariar77@gmail.com\n");
+    printf("\t\tName: MD Mahabub Morshed\tID: 19202103298\t\tEmail: mdmahabubmorshed876@gmail.com\n");
+    printf("\t\tName: Munzirul Alom\t\tID: 19202103303\t\tEmail: cse.alomb008@gmail.com\n");
 
     getch();
     main_menu(1);
 }
+
+//Display File all Content
 int print_file(FILE *fptr)
 {
     char ch;
@@ -67,7 +69,7 @@ int print_file(FILE *fptr)
         putchar(ch);
 }
 
-
+//Delete or Remove File Row
 int delete_file_row(FILE *main_file, FILE *temp_file, const int delete_line)
 {
     char buffer[255];
@@ -82,67 +84,108 @@ int delete_file_row(FILE *main_file, FILE *temp_file, const int delete_line)
     }
 }
 
+//Update or Replace File Row
+int replace_row(char filename[], int delete_line)
+{
+    FILE *main_file;
+    FILE *temp_file;
+    FILE *repl_file;
+
+    int count=1;
+    char buffer[255];
+    char replace[255];
+
+    main_file = fopen(filename, "r");
+    repl_file = fopen("rep-file.tmp", "r");
+    temp_file = fopen("temp-file.tmp", "w");
+
+    if (main_file == NULL || temp_file == NULL || repl_file == NULL)
+    {
+        printf("\n\nUnable to open file.\n");
+        exit(1);
+    }
+
+    fgets(replace, 250, repl_file);
+
+    rewind(main_file);
+
+    while ((fgets(buffer, 250, main_file)) != NULL)
+    {
+        if (delete_line != count)
+            fputs(buffer, temp_file);
+        else
+            fputs(replace, temp_file);
+
+        count++;
+    }
+
+    fclose(main_file);
+    fclose(temp_file);
+
+    remove(filename);
+    remove("rep-file.tmp");
+
+    rename("temp-file.tmp", filename);
+
+    printf("\n\n\t\t\tUpdated List (%d no Row).\n\n", delete_line);
+    main_file = fopen(filename, "r");
+    print_file(main_file);
+
+    fclose(main_file);
+}
+
 //Food list
 int food_list()
 {
     FILE *fp = fopen("food.txt", "r");
+    char buff_food[255];
+
     if(fp == NULL)
     {
-       perror("Unable to open file!");
+       printf("Unable to open file!");
        exit(1);
     }
 
-   char buff_food[255];
+    printf("\t\t\t::::::::::::::::::::::::::::::::::::::::::::\n");
+    printf("\t\t\t::                                        ::\n");
+    printf("\t\t\t::::::::::        Food List       ::::::::::\n");
+    printf("\t\t\t::                                        ::\n");
+    printf("\t\t\t::::::::::::::::::::::::::::::::::::::::::::\n\n\n");
 
-   while(fgets(buff_food, sizeof(buff_food), fp) != NULL)
-    {
-        fputs(buff_food, stdout);
-        fputs("\n\n", stdout);
-    }
-     fclose(fp);
-}
-
-//Admin Food Add Function
-int add_food()
-{
-    FILE *fptr;
-    fptr = fopen("food.txt", "a");
-
-    struct food add;
-
-    printf("Enter Food Code: ");scanf("%s", &add.code);
-    printf("Enter Food Name: ");scanf("%s", &add.name);
-    printf("Enter Food Description: ");scanf("%s", &add.description);
-    printf("Enter Food Price: ");scanf("%d", &add.price);
-
-    fprintf(fptr,"Food Code: %s\t|\tFood Name: %s\t|\tFood Discreption: %s\t|\tFood Price: %d tk\n", add.code, add.name, add.description, add.price);
-    fclose(fptr);
-
-    printf("Food Added Successful!\nPress any key to go Main Menu\n");
-    getch();
-    main_menu(1);
+    while(fgets(buff_food, sizeof(buff_food), fp) != NULL)
+        {
+            fputs(buff_food, stdout);
+            fputs("\n\n", stdout);
+        }
+    fclose(fp);
 }
 
 //Room list
 int room_list()
 {
     FILE *fp = fopen("room.txt", "r");
+    char buff_room[255];
+
     if(fp == NULL)
     {
-       perror("Unable to open file!");
+       printf("Unable to open file!");
        exit(1);
     }
+    printf("\t\t\t::::::::::::::::::::::::::::::::::::::::::::\n");
+    printf("\t\t\t::                                        ::\n");
+    printf("\t\t\t::::::::::        Room List       ::::::::::\n");
+    printf("\t\t\t::                                        ::\n");
+    printf("\t\t\t::::::::::::::::::::::::::::::::::::::::::::\n\n\n");
 
-   char buff_room[255];
-
-   while(fgets(buff_room, sizeof(buff_room), fp) != NULL)
-    {
-        fputs(buff_room, stdout);
-        fputs("\n\n", stdout);
-    }
-     fclose(fp);
+    while(fgets(buff_room, sizeof(buff_room), fp) != NULL)
+        {
+            fputs(buff_room, stdout);
+            fputs("\n\n", stdout);
+        }
+    fclose(fp);
 }
 
+//Delete Food Row
 int delete_food()
 {
     FILE *main_file;
@@ -157,12 +200,15 @@ int delete_food()
     if (main_file == NULL || temp_file == NULL)
     {
         printf("Unable to open file.\n");
-        printf("Please check you have read/write previleges.\n");
-
-        exit(EXIT_FAILURE);
+        exit(1);
     }
 
-    printf("File contents before removing.\n\n");
+    printf("\t\t\t::::::::::::::::::::::::::::::::::::::::::::\n");
+    printf("\t\t\t::                                        ::\n");
+    printf("\t\t\t::::::::::       Delete Food      ::::::::::\n");
+    printf("\t\t\t::                                        ::\n");
+    printf("\t\t\t::::::::::::::::::::::::::::::::::::::::::::\n\n\n");
+
     print_file(main_file);
 
     printf("Delete Food Row: ");
@@ -178,13 +224,14 @@ int delete_food()
     remove(filename);
     rename("temp-file.tmp", filename);
 
-    printf("\n\Food Lists after removing %d Row.\n\n", delete_line);
+    printf("\nFood Lists after removing %d Row.\n\n", delete_line);
     main_file = fopen(filename, "r");
     print_file(main_file);
 
     fclose(main_file);
 }
 
+//Delete Room Row
 int delete_room()
 {
     FILE *main_file;
@@ -204,7 +251,12 @@ int delete_room()
         exit(EXIT_FAILURE);
     }
 
-    printf("File contents before removing.\n\n");
+    printf("\t\t\t::::::::::::::::::::::::::::::::::::::::::::\n");
+    printf("\t\t\t::                                        ::\n");
+    printf("\t\t\t::::::::::       Delete Room      ::::::::::\n");
+    printf("\t\t\t::                                        ::\n");
+    printf("\t\t\t::::::::::::::::::::::::::::::::::::::::::::\n\n\n");
+
     print_file(main_file);
 
     printf("Delete Room Row: ");
@@ -227,6 +279,108 @@ int delete_room()
     fclose(main_file);
 }
 
+//Update Room List
+int update_food()
+{
+    char filename[]="food.txt";
+
+    FILE *fptr;
+    FILE *rep_file;
+
+    fptr = fopen(filename, "r");
+    rep_file = fopen("rep-file.tmp", "w");
+
+    struct food update;
+    int delete_line;
+
+    printf("\t\t\t::::::::::::::::::::::::::::::::::::::::::::\n");
+    printf("\t\t\t::                                        ::\n");
+    printf("\t\t\t::::::::::       Update Food      ::::::::::\n");
+    printf("\t\t\t::                                        ::\n");
+    printf("\t\t\t::::::::::::::::::::::::::::::::::::::::::::\n\n\n");
+
+    print_file(fptr);
+
+    printf("\n\nUpdate Food Row: ");
+    scanf("%d", &delete_line);
+
+    printf("Enter Food Code: ");scanf("%s", &update.code);
+    printf("Enter Food Name: ");scanf("%s", &update.name);
+    printf("Enter Food Description: ");scanf("%s", &update.description);
+    printf("Enter Food Price: ");scanf("%d", &update.price);
+
+    fprintf(rep_file,"Food Code: %s\t|\tFood Name: %s\t|\tFood Discreption: %s\t|\tFood Price: %d tk\n", update.code, update.name, update.description, update.price);
+    fclose(fptr);
+    fclose(rep_file);
+
+    replace_row(filename, delete_line);
+
+}
+
+//Update Room List
+int update_room()
+{
+    char filename[]="room.txt";
+
+    FILE *fptr;
+    FILE *rep_file;
+
+    fptr = fopen(filename, "r");
+    rep_file = fopen("rep-file.tmp", "w");
+
+    struct room update;
+    int delete_line;
+
+    printf("\t\t\t::::::::::::::::::::::::::::::::::::::::::::\n");
+    printf("\t\t\t::                                        ::\n");
+    printf("\t\t\t::::::::::       Update Room      ::::::::::\n");
+    printf("\t\t\t::                                        ::\n");
+    printf("\t\t\t::::::::::::::::::::::::::::::::::::::::::::\n\n\n");
+
+    print_file(fptr);
+
+    printf("\n\nUpdate Room Row: ");
+    scanf("%d", &delete_line);
+
+    printf("Enter Room No: ");scanf("%d", &update.no);
+    printf("Enter Room Name: ");scanf("%s", &update.name);
+    printf("Enter Room Features: ");scanf("%s", &update.features);
+    printf("Enter Room Type (1. AC or 2. Non AC): ");scanf("%d", &update.type);
+    printf("Enter Room Price: ");scanf("%d", &update.price);
+
+    fprintf(rep_file,"Room No: %d\t|\tRoom Name: %s\t|\tRoom Features: %s\t|\tRoom Type: %d\t|\tRoom Price: %d tk\n", update.no, update.name, update.features, update.type, update.price);
+    fclose(fptr);
+    fclose(rep_file);
+
+    replace_row(filename, delete_line);
+
+}
+
+//Admin Food Add Function
+int add_food()
+{
+    FILE *fptr;
+    fptr = fopen("food.txt", "a");
+
+    struct food add;
+
+    printf("\t\t\t::::::::::::::::::::::::::::::::::::::::::::\n");
+    printf("\t\t\t::                                        ::\n");
+    printf("\t\t\t::::::::::      Add New Food      ::::::::::\n");
+    printf("\t\t\t::                                        ::\n");
+    printf("\t\t\t::::::::::::::::::::::::::::::::::::::::::::\n\n\n");
+
+    printf("Enter Food Code: ");scanf("%s", &add.code);
+    printf("Enter Food Name: ");scanf("%s", &add.name);
+    printf("Enter Food Description: ");scanf("%s", &add.description);
+    printf("Enter Food Price: ");scanf("%d", &add.price);
+
+    fprintf(fptr,"Food Code: %s\t|\tFood Name: %s\t|\tFood Discreption: %s\t|\tFood Price: %d tk\n", add.code, add.name, add.description, add.price);
+    fclose(fptr);
+
+    printf("Food Added Successful!\nPress any key to go Menu\n");
+}
+
 //Admin Room Add Function
 int add_room()
 {
@@ -234,6 +388,12 @@ int add_room()
     fptr = fopen("room.txt", "a");
 
     struct room add;
+
+    printf("\t\t\t::::::::::::::::::::::::::::::::::::::::::::\n");
+    printf("\t\t\t::                                        ::\n");
+    printf("\t\t\t::::::::::      Add New Room      ::::::::::\n");
+    printf("\t\t\t::                                        ::\n");
+    printf("\t\t\t::::::::::::::::::::::::::::::::::::::::::::\n\n\n");
 
     printf("Enter Room No: ");scanf("%d", &add.no);
     printf("Enter Room Name: ");scanf("%s", &add.name);
@@ -244,9 +404,7 @@ int add_room()
     fprintf(fptr,"Room No: %d\t|\tRoom Name: %s\t|\tRoom Features: %s\t|\tRoom Type: %d\t|\tRoom Price: %d tk\n", add.no, add.name, add.features, add.type, add.price);
     fclose(fptr);
 
-    printf("Room Added Successful!\nPress any key to go Main Menu\n");
-    getch();
-    main_menu(1);
+    printf("Room Added Successful!\nPress any key to go Menu\n");
 
 }
 
@@ -256,7 +414,7 @@ int admin_food_menu()
     system("CLS");
     int N;
 
-    printf("1. Add Food\n2. Food List\n3. Delete Food\n4. Main Menu\n\n");
+    printf("1. Add Food\n2. Food List\n3. Update Food\n4. Delete Food\n5. Main Menu\n\n");
     printf("Enter Choice: ");scanf("%d", &N);
 
     switch(N)
@@ -275,11 +433,17 @@ int admin_food_menu()
         break;
     case 3:
         system("CLS");
-        delete_food();
+        update_food();
         getch();
         admin_food_menu();
         break;
     case 4:
+        system("CLS");
+        delete_food();
+        getch();
+        admin_food_menu();
+        break;
+    case 5:
         main_menu(1);
         break;
     default:
@@ -293,7 +457,7 @@ int admin_room_menu()
     system("CLS");
     int N;
 
-    printf("1. Add Room\n2. Room List\n3. Delete Room\n4. Main Menu\n\n");
+    printf("1. Add Room\n2. Room List\n3. Update Room\n4. Delete Room\n5. Main Menu\n\n");
     printf("Enter Choice: ");scanf("%d", &N);
 
     switch(N)
@@ -312,11 +476,17 @@ int admin_room_menu()
         break;
     case 3:
         system("CLS");
-        delete_room();
+        update_room();
         getch();
         admin_room_menu();
         break;
     case 4:
+        system("CLS");
+        delete_room();
+        getch();
+        admin_room_menu();
+        break;
+    case 5:
         main_menu(1);
         break;
     default:
@@ -340,40 +510,6 @@ int hotel_features()
 
 }
 
-//Admin Login Function
-int admin_login()
-{
-    system("CLS");
-    char username[50], password[100];
-
-
-    FILE *log;
-    log = fopen("admin_info.txt", "r");
-    struct admin login;
-    printf("Username: ");scanf("%s", &username);
-    printf("Password: ");scanf("%s", &password);
-
-
-    while(fread(&login, sizeof(login), 1, log))
-    {
-        if(strcmp(username,login.username)==0 && strcmp(password,login.password)==0)
-            printf("User Login Succesful\n");
-        else
-        {
-            printf("Incorrect Username or Password. Please Try again\nPress any key to try again...");
-            getch();
-            system("CLS");
-            user_login();
-        }
-    }
-
-    fclose(log);
-
-    main_menu(1);
-}
-
-
-
 
 //End Order
 int thanks()
@@ -384,7 +520,16 @@ int thanks()
     printf("                    ##      ##     ##   ## ## ##   ##   # ##  ## ##          #                   \n");
     printf("                    ##      ##     ##  ##      ##  ##    ###  ##   ##   #####                    \n\n");
     printf("##############################################################################################   \n\n");
-    printf("Your Order is placed.");
+    printf("\n\t\tOrder Details\n\n");
+
+    FILE *fp;
+    char buff[255];//creating char array to store data of file
+    fp = fopen("temp_order.txt", "r");
+    while(fscanf(fp, "%s", buff)!=EOF){
+    printf("%s", buff);
+    }
+    fclose(fp);
+
     getch();
     main_menu(2);
 }
@@ -484,6 +629,11 @@ int order(int a)
         printf("Rooms\t\t: %d\n", room.item_count);
         printf("Adults\t\t: %d\n", room.adult_count);
         printf("Children\t: %d\n", room.children_count);
+
+        FILE *fptr;
+        fptr = fopen("temp_order.txt", "w");
+        fprintf(fptr, "Check ID Date(D-M-Y)\t: %s\nCheck Out Date\t: %s\nRooms\t\t: %d\nAdults\t\t: %d\nChildren\t: %d\n", room.in_date, room.out_date, room.item_count, room.adult_count, room.children_count);
+        fclose(fptr);
 
         char c;
         printf("To Confirm Your Order (Y/N): ");scanf("%s", &c);
@@ -725,6 +875,38 @@ int user_login()
     main_menu(2);
 }
 
+//Admin Login Function
+int admin_login()
+{
+    system("CLS");
+    char username[50], password[100];
+
+
+    FILE *log;
+    log = fopen("admin_info.txt", "r");
+    struct admin login;
+    printf("Username: ");scanf("%s", &username);
+    printf("Password: ");scanf("%s", &password);
+
+
+    while(fread(&login, sizeof(login), 1, log))
+    {
+        if(strcmp(username,login.username)==0 && strcmp(password,login.password)==0)
+            printf("User Login Succesful\n");
+        else
+        {
+            printf("Incorrect Username or Password. Please Try again\nPress any key to try again...");
+            getch();
+            system("CLS");
+            admin_login();
+        }
+    }
+
+    fclose(log);
+
+    main_menu(1);
+}
+
 //User Registetion function
 int registation()
 {
@@ -757,7 +939,6 @@ int main_menu(int i)
     {
         int N;
         printf("        ## Admin Menu ##\n\n");
-        //printf("1. Order List\n2. Room\n3. Food\n4. Hotel Feature\n5. Hotel Name\n6. Location\n7. Transport\n8. User\n9. Employ\n10. Payment\n11. Contact\n\n");
         printf("1. Hotel Name\n2. Hotel Features\n3. Location\n4. Transport\n5. Order\n6. Room\n7. Food\n8. Employ\n9. User\n10. Payment\n11. Contact\n\n");
         printf("Enter Choice: ");scanf("%d", &N);
 
