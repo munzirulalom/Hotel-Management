@@ -7,4 +7,4 @@ Room No: 207	|	Room Name: Room_7	|	Room Features: Wifi,TV,AC,Swiming	|	Room Type
 Room No: 208	|	Room Name: Room_8	|	Room Features: Wifi,TV,AC,Swiming	|	Room Type: 1	|	Room Price: 8900 tk
 Room No: 209	|	Room Name: Room_9	|	Room Features: Wifi,TV,Swiming		|	Room Type: 2	|	Room Price: 2350 tk
 Room No: 210	|	Room Name: Room_10	|	Room Features: TV,AC,Swiming	|	Room Type: 1	|	Room Price: 6899 tk
-Room No: 210	|	Room Name: Room_10	|	Room Features: TV,AC,Wifi,Swiming	|	Room Type: 1	|	Room Price: 8000 tk
+Room No: 211	|	Room Name: Room_11	|	Room Features: TV,AC,Swiming,Wifi	|	Room Type: 1	|	Room Price: 7890 tk
