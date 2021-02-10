@@ -4,8 +4,11 @@
 
 struct admin
 {
+    char name[100];
     char username[50];
     char password[100];
+    char email[50];
+    char nationality[20];
 };
 struct user
 {
@@ -404,6 +407,7 @@ int add_room()
     fprintf(fptr,"Room No: %d\t|\tRoom Name: %s\t|\tRoom Features: %s\t|\tRoom Type: %d\t|\tRoom Price: %d tk\n", add.no, add.name, add.features, add.type, add.price);
     fclose(fptr);
 
+    printf("\n\n\nRoom No: %d\t|\tRoom Name: %s\t|\tRoom Features: %s\t|\tRoom Type: %d\t|\tRoom Price: %d tk\n\n", add.no, add.name, add.features, add.type, add.price);
     printf("Room Added Successful!\nPress any key to go Menu\n");
 
 }
@@ -520,15 +524,17 @@ int thanks()
     printf("                    ##      ##     ##   ## ## ##   ##   # ##  ## ##          #                   \n");
     printf("                    ##      ##     ##  ##      ##  ##    ###  ##   ##   #####                    \n\n");
     printf("##############################################################################################   \n\n");
+    printf("Payment is Confirmed..........\n");
     printf("\n\t\tOrder Details\n\n");
 
     FILE *fp;
     char buff[255];//creating char array to store data of file
     fp = fopen("temp_order.txt", "r");
-    while(fscanf(fp, "%s", buff)!=EOF){
-    printf("%s", buff);
-    }
+
+    print_file(fp);
+
     fclose(fp);
+    remove("temp_order.txt");
 
     getch();
     main_menu(2);
@@ -551,7 +557,6 @@ int card(int price)
 
     if(c=='Y')
     {
-        printf("Payment Confirm..........\n");
         thanks();
     }
     else
@@ -908,27 +913,50 @@ int admin_login()
 }
 
 //User Registetion function
-int registation()
+int registation(int N)
 {
-    FILE *reg;
-    reg = fopen("user_info.txt", "w");
-    struct user add;
+    if (N == 1)
+    {
+        FILE *reg;
+        reg = fopen("admin_info.txt", "w");
+        struct admin add;
 
-    printf("Enter username: ");scanf("%s", add.username);
-    printf("Enter your name: ");scanf("%s", add.name);
-    printf("Enter your email: ");scanf("%s", add.email);
-    printf("Enter a password: ");scanf("%s", add.password);
-    printf("Enter your NID/Passport no: ");scanf("%s", add.nid);
-    printf("Enter your address: ");scanf("%s", add.address);
-    printf("Enter your nationality: ");scanf("%s", add.nationality);
+        printf("Enter username: ");scanf("%s", add.username);
+        printf("Enter your name: ");scanf("%s", add.name);
+        printf("Enter your email: ");scanf("%s", add.email);
+        printf("Enter a password: ");scanf("%s", add.password);
+        printf("Enter your nationality: ");scanf("%s", add.nationality);
 
-    fwrite(&add, sizeof(add), 1, reg);
-    fclose(reg);
+        fwrite(&add, sizeof(add), 1, reg);
+        fclose(reg);
 
-    printf("\tRegistation Sussefull\nPress any key to Login...");
-    getch();
-    system("CLS");
-    user_login();
+        printf("\n\nRegistation Sussefull\n\nPress any key to Login...");
+        getch();
+        system("CLS");
+        admin_login();
+    }
+    else if (N == 2)
+    {
+        FILE *reg;
+        reg = fopen("user_info.txt", "w");
+        struct user add;
+
+        printf("Enter username: ");scanf("%s", add.username);
+        printf("Enter your name: ");scanf("%s", add.name);
+        printf("Enter your email: ");scanf("%s", add.email);
+        printf("Enter a password: ");scanf("%s", add.password);
+        printf("Enter your NID/Passport no: ");scanf("%s", add.nid);
+        printf("Enter your address: ");scanf("%s", add.address);
+        printf("Enter your nationality: ");scanf("%s", add.nationality);
+
+        fwrite(&add, sizeof(add), 1, reg);
+        fclose(reg);
+
+        printf("\tRegistation Sussefull\nPress any key to Login...");
+        getch();
+        system("CLS");
+        user_login();
+    }
 }
 
 //Admin and User Main Menu
@@ -1085,10 +1113,16 @@ int main()
         if(n==1)
             user_login();
         if(n==2)
-            registation();
+            registation(2);
     }
     else if(n==2)
-        admin_login();
+        printf("1. Login\n2. Registation\n");
+        printf("Enter choice: "); scanf("%d", &n);
+        system("CLS");
+        if(n==1)
+            admin_login();
+        if(n==2)
+            registation(1);
     else
         printf("Invalid Input!\n");
 
