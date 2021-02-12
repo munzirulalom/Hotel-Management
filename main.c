@@ -20,6 +20,12 @@ struct user
     char address[100];
     char nationality[20];
 };
+struct employee
+{
+    char name[100];
+    char address[100];
+    long salary;
+};
 struct room
 {
     int no;
@@ -359,6 +365,43 @@ int update_room()
 
 }
 
+//Update Employee List
+int update_employee()
+{
+    char filename[]="employee.txt";
+
+    FILE *fptr;
+    FILE *rep_file;
+
+    fptr = fopen(filename, "r");
+    rep_file = fopen("rep-file.tmp", "w");
+
+    struct employee update;
+    int delete_line;
+
+    printf("\t\t\t::::::::::::::::::::::::::::::::::::::::::::\n");
+    printf("\t\t\t::                                        ::\n");
+    printf("\t\t\t::::::::::    Update Employee     ::::::::::\n");
+    printf("\t\t\t::                                        ::\n");
+    printf("\t\t\t::::::::::::::::::::::::::::::::::::::::::::\n\n\n");
+
+    print_file(fptr);
+
+    printf("\n\nUpdate Employee Row: ");
+    scanf("%d", &delete_line);
+
+    printf("Enter Employee Name: ");scanf("%s", &update.name);
+    printf("Enter Employee Address: ");scanf("%s", &update.address);
+    printf("Enter Employee Salary: "); scanf("%ld", &update.salary);
+
+    fprintf(rep_file,"Employee Name: %s\t|\tEmployee Address: %s\t|\tEmployee Salary: %ld\n", update.name, update.address, update.salary);
+    fclose(fptr);
+    fclose(rep_file);
+
+    replace_row(filename, delete_line);
+
+}
+
 //Admin Food Add Function
 int add_food()
 {
@@ -410,6 +453,32 @@ int add_room()
     printf("\n\n\nRoom No: %d\t|\tRoom Name: %s\t|\tRoom Features: %s\t|\tRoom Type: %d\t|\tRoom Price: %d tk\n\n", add.no, add.name, add.features, add.type, add.price);
     printf("Room Added Successful!\nPress any key to go Menu\n");
 
+}
+
+//Admin Employee Add Function
+int add_employee()
+{
+
+    FILE *fptr;
+    fptr = fopen("employee.txt", "a");
+
+    struct employee add;
+
+    printf("\t\t\t::::::::::::::::::::::::::::::::::::::::::::\n");
+    printf("\t\t\t::                                        ::\n");
+    printf("\t\t\t::::::::::    Add New Employee    ::::::::::\n");
+    printf("\t\t\t::                                        ::\n");
+    printf("\t\t\t::::::::::::::::::::::::::::::::::::::::::::\n\n\n");
+
+    printf("Enter Employee Name: ");scanf("%s", &add.name);
+    printf("Enter Employee Address: ");scanf("%s", &add.address);
+    printf("Enter Employee Salary: "); scanf("%ld", &add.salary);
+
+    fprintf(fptr,"Employee Name: %s\t|\tEmployee Address: %s\t|\tEmployee Salary: %ld\n", add.name, add.address, add.salary);
+    fclose(fptr);
+
+    printf("\n\n\nEmployee Name: %s\t|\tEmployee Address: %s\t|\tEmployee Salary: %ld\n\n", add.name, add.address, add.salary);
+    printf("Employee Added Successful!\nPress any key to go Menu\n");
 }
 
 //Admin Food Menu
@@ -489,6 +558,48 @@ int admin_room_menu()
         delete_room();
         getch();
         admin_room_menu();
+        break;
+    case 5:
+        main_menu(1);
+        break;
+    default:
+        printf("Error: Invalid Input...");
+    }
+}
+//Admin Employee Menu
+int admin_employee_menu()
+{
+    system("CLS");
+    int N;
+
+    printf("1. Add Employee\n2. Employee List\n3. Update Employee\n4. Delete Employee\n5. Main Menu\n\n");
+    printf("Enter Choice: ");scanf("%d", &N);
+
+    switch(N)
+    {
+    case 1:
+        system("CLS");
+        add_employee();
+        getch();
+        admin_employee_menu();
+        break;
+    case 2:
+        system("CLS");
+        room_list();
+        getch();
+        admin_employee_menu();
+        break;
+    case 3:
+        system("CLS");
+        update_employee();
+        getch();
+        admin_employee_menu();
+        break;
+    case 4:
+        system("CLS");
+        delete_room();
+        getch();
+        admin_employee_menu();
         break;
     case 5:
         main_menu(1);
@@ -912,7 +1023,7 @@ int admin_login()
     main_menu(1);
 }
 
-//User Registetion function
+//Admin and User Registetion function
 int registation(int N)
 {
     if (N == 1)
@@ -967,7 +1078,7 @@ int main_menu(int i)
     {
         int N;
         printf("        ## Admin Menu ##\n\n");
-        printf("1. Hotel Name\n2. Hotel Features\n3. Location\n4. Transport\n5. Order\n6. Room\n7. Food\n8. Employ\n9. User\n10. Payment\n11. Contact\n\n");
+        printf("1. Hotel Name\n2. Hotel Features\n3. Location\n4. Transport\n5. Order\n6. Room\n7. Food\n8. Employee\n9. User\n10. Payment\n11. Contact\n12. Logout\n\n");
         printf("Enter Choice: ");scanf("%d", &N);
 
         switch(N)
@@ -1003,7 +1114,7 @@ int main_menu(int i)
             admin_food_menu();
             break;
         case 8:
-            printf("Employ Function.....");
+            admin_employee_menu();
             getch();
             main_menu(1);
             break;
@@ -1015,6 +1126,10 @@ int main_menu(int i)
             break;
         case 11:
             contact();
+            break;
+        case 12:
+            system("CLS");
+            main();
             break;
         default:
             printf("Error: Invalid input...");
@@ -1107,22 +1222,31 @@ int main()
     system("CLS");
     if(n==1)
     {
+        n=0;
         printf("1. Login\n2. Registation\n");
         printf("Enter choice: "); scanf("%d", &n);
         system("CLS");
         if(n==1)
             user_login();
-        if(n==2)
+        else if(n==2)
             registation(2);
+        else
+            printf("Invalid Input!");
     }
     else if(n==2)
+    {
+        n=0;
         printf("1. Login\n2. Registation\n");
         printf("Enter choice: "); scanf("%d", &n);
         system("CLS");
         if(n==1)
             admin_login();
-        if(n==2)
+        else if(n==2)
             registation(1);
+        else
+            printf("Invalid Input!\n");
+    }
+
     else
         printf("Invalid Input!\n");
 
