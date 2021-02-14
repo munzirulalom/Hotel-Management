@@ -288,6 +288,52 @@ int delete_room()
     fclose(main_file);
 }
 
+//Delete Employee Row
+int delete_employee()
+{
+    FILE *main_file;
+    FILE *temp_file;
+
+    char filename[100]="employee.txt";
+    int delete_line;
+
+    main_file  = fopen(filename, "r");
+    temp_file = fopen("temp-file.tmp", "w");
+
+    if (main_file == NULL || temp_file == NULL)
+    {
+        printf("Unable to open file.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    printf("\t\t\t::::::::::::::::::::::::::::::::::::::::::::\n");
+    printf("\t\t\t::                                        ::\n");
+    printf("\t\t\t::::::::::    Delete Employee     ::::::::::\n");
+    printf("\t\t\t::                                        ::\n");
+    printf("\t\t\t::::::::::::::::::::::::::::::::::::::::::::\n\n\n");
+
+    print_file(main_file);
+
+    printf("Delete Employee Row: ");
+    scanf("%d", &delete_line);
+
+    rewind(main_file);
+
+    delete_file_row(main_file, temp_file, delete_line);
+
+    fclose(main_file);
+    fclose(temp_file);
+
+    remove(filename);
+    rename("temp-file.tmp", filename);
+
+    printf("\n\Employee Lists after removing %d Row.\n\n", delete_line);
+    main_file = fopen(filename, "r");
+    print_file(main_file);
+
+    fclose(main_file);
+}
+
 //Update Room List
 int update_food()
 {
@@ -597,7 +643,7 @@ int admin_employee_menu()
         break;
     case 4:
         system("CLS");
-        delete_room();
+        delete_employee();
         getch();
         admin_employee_menu();
         break;
