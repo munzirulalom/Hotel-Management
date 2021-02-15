@@ -1,1 +1,7 @@
-Employee Name: Alom	|	Employee Address: Dhaka,Mirpur-2	|	Employee Salary: 25500
+Employee Name: A	|	Employee Address: Dhaka,Mirpur-2	|	Employee Salary: 25500
+Employee Name: B	|	Employee Address: Dhaka,Mirpur-1	|	Employee Salary: 25000
+Employee Name: C	|	Employee Address: Dhaka,Mirpur-10	|	Employee Salary: 28500
+Employee Name: D	|	Employee Address: Dhaka,Mirpur-2	|	Employee Salary: 15000
+Employee Name: E	|	Employee Address: Dhaka,Mirpur-11	|	Employee Salary: 10000
+Employee Name: F	|	Employee Address: Dhaka,Mirpur-5	|	Employee Salary: 35800
+Employee Name: G	|	Employee Address: Dhaka,Mirpur-6	|	Employee Salary: 32700

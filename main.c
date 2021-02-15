@@ -194,6 +194,31 @@ int room_list()
     fclose(fp);
 }
 
+//Employee list
+int employee_list()
+{
+    FILE *fp = fopen("employee.txt", "r");
+    char buff_room[255];
+
+    if(fp == NULL)
+    {
+       printf("Unable to open file!");
+       exit(1);
+    }
+    printf("\t\t\t::::::::::::::::::::::::::::::::::::::::::::\n");
+    printf("\t\t\t::                                        ::\n");
+    printf("\t\t\t::::::::::     Employee List      ::::::::::\n");
+    printf("\t\t\t::                                        ::\n");
+    printf("\t\t\t::::::::::::::::::::::::::::::::::::::::::::\n\n\n");
+
+    while(fgets(buff_room, sizeof(buff_room), fp) != NULL)
+        {
+            fputs(buff_room, stdout);
+            fputs("\n\n", stdout);
+        }
+    fclose(fp);
+}
+
 //Delete Food Row
 int delete_food()
 {
@@ -631,7 +656,7 @@ int admin_employee_menu()
         break;
     case 2:
         system("CLS");
-        room_list();
+        employee_list();
         getch();
         admin_employee_menu();
         break;
