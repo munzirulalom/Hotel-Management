@@ -79,6 +79,7 @@ void main_menu();
 void employee_menu();
 void room_menu();
 void food_menu();
+void user_menu();
 
 void add_room();
 void room_list();
@@ -91,6 +92,11 @@ void food_list();
 void update_food();
 void delete_food();
 void food_search();
+
+void user_list();
+void update_user();
+void delete_user();
+void user_search();
 
 void add_employee();
 void employee_list();
@@ -122,7 +128,7 @@ void contact()
 {
     system("CLS");
     printf("\n\n\n");
-    printf("\t\t\t::::: Hotel Management System :::::\n\n");
+    printf("\t\t\t:::::::::: Hotel Management System ::::::::::\n\n");
     printf("\t\tName: D.M. Ajmain Shariar\tID: 19202103308\t\tEmail: ajmainshariar77@gmail.com\n");
     printf("\t\tName: MD Mahabub Morshed\tID: 19202103298\t\tEmail: mdmahabubmorshed876@gmail.com\n");
     printf("\t\tName: Munzirul Alom\t\tID: 19202103303\t\tEmail: cse.alomb008@gmail.com\n");
@@ -211,22 +217,22 @@ void login(int n)
 
         while(fread(&admin_nfo, sizeof(admin_nfo), 1, log) && flag==0)
         {
-            if(strcmp(username,admin_nfo.username)==0 && strcmp(password,admin_nfo.password) == 0)
+            if(strcmp(admin_nfo.username,username)==0 && strcmp(admin_nfo.password,password) == 0)
             {
                 flag=1;
                 printf("\nAdmin Login Successful\n\n");
-            }
-            else
-            {
-                printf("Incorrect Username or Password. Please Try again\nPress any key to try again...");
-                getch();
-                system("cls");
-                login(1);
             }
         }
         fclose(log);
         if(flag==1)
             main_menu(1);
+        else if(flag==0)
+        {
+            printf("Incorrect Username or Password. Please Try again\nPress any key to try again...");
+            getch();
+            system("cls");
+            login(1);
+        }
     }
     else if(n==2) //User Login
     {
@@ -249,18 +255,18 @@ void login(int n)
                 flag=1;
                 printf("\nUser Login Successful\n\n");
             }
-            else
-            {
-                printf("Incorrect Username or Password. Please Try again\nPress any key to try again...");
-                getch();
-                system("cls");
-                login(2);
-            }
         }
         fclose(log);
 
         if(flag==1)
             main_menu(2);
+        else if(flag == 0)
+        {
+            printf("Incorrect Username or Password. Please Try again\nPress any key to try again...");
+            getch();
+            system("cls");
+            login(2);
+        }
     }
 
 }
@@ -422,7 +428,7 @@ void main_menu(int n)
             main_menu(1);
             break;
         case 9:
-            printf("User Function.....");
+            user_menu(1);
             break;
         case 10:
             printf("Payment Function.....");
@@ -465,7 +471,17 @@ void main_menu(int n)
                 main_menu(2);
                 break;
             case 4:
-                printf("User Profile Function");
+                system("cls");
+                m=0;
+                printf("1. View Profile\n");
+                printf("2. Edit Profile\n");
+                printf("3. Change Password\n");
+                printf("Enter your choice: ");scanf("%d", &m);
+
+                if(m==1) user_search(2);
+                else if(m==2) update_user(2);
+                else if(m==3) update_user(3);
+                else printf("Invalid Input...");
                 getch();
                 main_menu(2);
                 break;
@@ -1395,6 +1411,350 @@ void food_search(int n, int autho)
     }
     fclose(fptr);
 }
+
+/*
+    ==================================================================================
+                                    User Function
+    ==================================================================================
+*/
+void user_menu(int n)
+{
+    system("cls");
+    int m;
+
+    if(n==1) //Admin User Menu
+    {
+        n=m=0;
+        printf("::::::::::Admin User Menu::::::::::\n\n");
+        printf("1. User List\n");
+        printf("2. Update User\n");
+        printf("3. Delete User\n");
+        printf("4. Search User\n");
+        printf("5. Main Menu\n\n");
+        printf("Enter choice: ");scanf("%d", &m);
+
+        switch(m)
+        {
+        case 1:
+            system("cls");
+            user_list();
+            getch();
+            user_menu(1);
+            break;
+        case 2:
+            update_user(1);
+            getch();
+            user_menu(1);
+            break;
+        case 3:
+            delete_user();
+            getch();
+            user_menu(1);
+            break;
+        case 4:
+            user_search(1);
+            getch();
+            user_menu(1);
+            break;
+        case 5:
+            main_menu(1);
+            break;
+        default:
+            printf("Error: invalid input");
+        }
+    }
+    else if(n==2) //User Room Menu
+    {
+        n=m=0;
+        printf("::::::::::User Room Menu::::::::::\n\n");
+        printf("1. AC Room\n");
+        printf("2. Non AC Room\n");
+        printf("3. Main Menu\n\n");
+        printf("Enter choice: ");scanf("%d", &m);
+
+        switch (m)
+        {
+        case 1:
+            room_search(1,2);
+            break;
+        case 2:
+            room_search(2,2);
+            break;
+        case 3:
+            main_menu(2);
+            break;
+        default:
+            printf("Error: Invalid Input");
+        }
+
+
+    }
+
+}
+
+/*
+    ==================================================================================
+                                    Admin User List Function
+    ==================================================================================
+*/
+void user_list()
+{
+    FILE *fptr = fopen("user.txt", "rb");
+
+    if(fptr == NULL)
+    {
+        printf("Error: Unable to open file.");
+        exit(1);
+    }
+
+    printf("::::::::::User List::::::::::\n\n");
+    while(fread(&user_info, sizeof(user_info), 1, fptr))
+    {
+        printf("Username: %s", user_info.username);
+        printf("\t|\tName: %s", user_info.name);
+        printf("\t|\tEmail: %s", user_info.email);
+        printf("\t|\tNID: %s", user_info.nid);
+        printf("\t|\tAddress: %s", user_info.address);
+        printf("\t|\tNationality: %s", user_info.nationality);
+        printf("\t|\tPassword: %s", user_info.password);
+        printf("\n\n");
+    }
+    fclose(fptr);
+}
+
+/*
+    ==================================================================================
+                                    Admin & User Update User Function
+    ==================================================================================
+*/
+void update_user(int n)
+{
+    system("cls");
+
+    if(n==1)
+        user_list();
+
+    FILE *main_file;
+    FILE *temp_file;
+
+    char filename[100]="user.txt";
+
+    main_file  = fopen(filename, "rb+");
+    temp_file = fopen("temp-file.tmp", "wb+");
+
+    if (main_file == NULL || temp_file == NULL)
+    {
+        printf("Unable to open file.\n");
+        exit(1);
+    }
+    rewind(main_file);
+
+    if(n==1) //Admin User Update Function
+    {
+        char up_username[50];
+        printf("Enter username which is you want to update: ");
+        scanf("%s", &up_username);
+
+        while(fread(&user_info, sizeof(user_info),1,main_file) == 1)
+        {
+            if(strcmp(user_info.username,up_username) != 0)
+                fwrite(&user_info, sizeof(user_info), 1, temp_file);
+            else if(strcmp(user_info.username,up_username) == 0)
+            {
+                printf("Username: %s *Usernames cannot be changed\n", user_info.username);
+                printf("Update Name: ");scanf("%s", &user_info.name);
+                printf("Update Email: ");scanf("%s", &user_info.email);
+                printf("NID/Passport No: ");scanf("%s", &user_info.nid);
+                printf("Update Address: ");scanf("%s", &user_info.address);
+                printf("Update Nationality: ");scanf("%s", &user_info.nationality);
+                printf("Update Password: ");scanf("%s", &user_info.password);
+
+                fwrite(&user_info, sizeof(user_info), 1, temp_file);
+            }
+        }
+    }
+    else if(n==2) //User Profile Update Function
+    {
+        printf("::::::::::Update Profile::::::::::\n\n");
+        while(fread(&user_info, sizeof(user_info),1,main_file) == 1)
+        {
+            if(strcmp(user_info.username,username) != 0)
+                fwrite(&user_info, sizeof(user_info), 1, temp_file);
+            else if(strcmp(user_info.username,username) == 0)
+            {
+                printf("Username: %s *Usernames cannot be changed\n", user_info.username);
+                printf("Update Name: ");scanf("%s", &user_info.name);
+                printf("Update Email: ");scanf("%s", &user_info.email);
+                printf("NID/Passport No: %s *NID/Passport cannot be changed\n", user_info.nid);
+                printf("Update Address: ");scanf("%s", &user_info.address);
+                printf("Update Nationality: ");scanf("%s", &user_info.nationality);
+
+                fwrite(&user_info, sizeof(user_info), 1, temp_file);
+
+                printf("Profile update successful. Press any key to continue...");
+            }
+        }
+    }
+    else if(n==3) //User Password Update Function
+    {
+        printf("::::::::::Change Password::::::::::\n\n");
+        while(fread(&user_info, sizeof(user_info),1,main_file) == 1)
+        {
+            if(strcmp(user_info.username,username) != 0)
+                fwrite(&user_info, sizeof(user_info), 1, temp_file);
+            else if(strcmp(user_info.username,username) == 0)
+            {
+                char up_password[100];
+                printf("Enter previous password: ");scanf("%s", &up_password);
+
+                if(strcmp(user_info.password,up_password)==0)
+                {
+                    printf("Enter new password: ");scanf("%s", &user_info.password);
+                    printf("Password Update Successful. Press any key to continue...");
+                }
+                else
+                    printf("Password does not matched. Press any key to continue...");
+
+                fwrite(&user_info, sizeof(user_info), 1, temp_file);
+            }
+        }
+    }
+
+    fclose(main_file);
+    fclose(temp_file);
+
+    remove(filename);
+    rename("temp-file.tmp", filename);
+
+    printf("\n\n");
+
+    if(n==1)
+    {
+        printf("::::::::::After Update::::::::::");
+        user_list();
+    }
+    else if(n==2 || n==3)
+    {
+        getch();
+        main_menu(2);
+    }
+}
+
+/*
+    ==================================================================================
+                                    Admin User Delete Function
+    ==================================================================================
+*/
+void delete_user()
+{
+    system("cls");
+
+    FILE *main_file;
+    FILE *temp_file;
+
+    char filename[100]="user.txt";
+    char del_username[50];
+
+    main_file  = fopen(filename, "rb+");
+    temp_file = fopen("temp-file.tmp", "wb+");
+
+    if (main_file == NULL || temp_file == NULL)
+    {
+        printf("Unable to open file.\n");
+        exit(1);
+    }
+
+    user_list();
+
+    printf("Enter username which is you want to delete: ");
+    scanf("%s", &del_username);
+
+    rewind(main_file);
+
+    while(fread(&user_info, sizeof(user_info),1,main_file) == 1)
+    {
+        if(strcmp(user_info.username,del_username) !=0 )
+        {
+            fwrite(&user_info, sizeof(user_info), 1, temp_file);
+        }
+    }
+
+    fclose(main_file);
+    fclose(temp_file);
+
+    remove(filename);
+    rename("temp-file.tmp", filename);
+
+    printf("::::::::::After Delete %s User::::::::::", del_username);
+    user_list();
+
+}
+
+/*
+    ==================================================================================
+                                    Admin User Searching Function
+    ==================================================================================
+*/
+void user_search(int n)
+{
+    system("cls");
+    FILE *fptr = fopen("user.txt", "rb");
+
+    int flag=0;
+
+    if(fptr == NULL)
+    {
+        printf("Error: Unable to open file.");
+        exit(1);
+    }
+
+    if(n==1)
+    {
+        char ser_user[50];
+        printf("::::::::::User Searching::::::::::\n\n");
+        printf("Enter usernames: ");scanf("%s", &ser_user);
+
+        while(fread(&user_info, sizeof(user_info), 1, fptr) && flag==0)
+        {
+            if(strcmp(user_info.username,ser_user)==0)
+            {
+                flag = 1;
+                printf("Username: %s", user_info.username);
+                printf("\t|\tName: %s", user_info.name);
+                printf("\t|\tEmail: %s", user_info.email);
+                printf("\t|\tNID: %s", user_info.nid);
+                printf("\t|\tAddress: %s", user_info.address);
+                printf("\t|\tNationality: %s", user_info.nationality);
+                printf("\t|\tPassword: %s", user_info.password);
+                printf("\n\n");
+            }
+        }
+    }
+    if(n==2)
+    {
+        printf("::::::::::User Profile::::::::::\n\n");
+
+        while(fread(&user_info, sizeof(user_info), 1, fptr) && flag==0)
+        {
+            if(strcmp(user_info.username,username)==0)
+            {
+                flag = 1;
+                printf("Username: %s", user_info.username);
+                printf("\t|\tName: %s", user_info.name);
+                printf("\t|\tEmail: %s", user_info.email);
+                printf("\t|\tNID: %s", user_info.nid);
+                printf("\t|\tAddress: %s", user_info.address);
+                printf("\t|\tNationality: %s", user_info.nationality);
+                printf("\n\n");
+            }
+        }
+    }
+    fclose(fptr);
+
+    if(flag==0)
+        printf("\n\nError: User Not Found");
+}
+
 
 /*
     ==================================================================================
