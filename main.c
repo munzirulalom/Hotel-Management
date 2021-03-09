@@ -6,6 +6,14 @@
 char username[50];
 int item_id=0;
 
+struct hotel
+{
+    char name[50];
+    char features[100];
+    char location[50];
+    char phone[15];
+    char email[25];
+} hotel_inf;
 struct admin
 {
     char name[100];
@@ -73,6 +81,9 @@ struct payment
 } payment_info;
 
 //All Function
+void hotel_info();
+void dis_hotel_info();
+
 void login();
 void registration();
 void main_menu();
@@ -124,14 +135,32 @@ void order_room_update();
                                 Contact Function
     ==================================================================================
 */
+
+void top()
+{
+    printf("\t\t\t\t\t\t\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\n");
+
+    printf("\t\t\t\t\t\t\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1     \xB1\xB1\xB1\xB1\xB1\xB1\xB1     \xB1\xB1\xB1\xB1\xB1               \xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1 \n");
+    printf("\t\t\t\t\t\t\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1   \xB1  \xB1\xB1\xB1\xB1\xB1  \xB1   \xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1 \n");
+    printf("\t\t\t\t\t\t\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1   \xB1\xB1  \xB1\xB1\xB1  \xB1\xB1   \xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1 \n");
+    printf("\t\t\t\t\t\t\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1  \xB1  \xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1 \n");
+    printf("\t\t\t\t\t\t\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1                \xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1               \xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1 \n");
+    printf("\t\t\t\t\t\t\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1 \n");
+    printf("\t\t\t\t\t\t\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1 \n");
+    printf("\t\t\t\t\t\t\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1 \n");
+    printf("\t\t\t\t\t\t\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1   \xB1\xB1\xB1\xB1\xB1               \xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1 \n");
+
+    printf("\t\t\t\t\t\t\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1 \n\n");
+}
+
 void contact()
 {
     system("CLS");
-    printf("\n\n\n");
-    printf("\t\t\t:::::::::: Hotel Management System ::::::::::\n\n");
-    printf("\t\tName: D.M. Ajmain Shariar\tID: 19202103308\t\tEmail: ajmainshariar77@gmail.com\n");
-    printf("\t\tName: MD Mahabub Morshed\tID: 19202103298\t\tEmail: mdmahabubmorshed876@gmail.com\n");
-    printf("\t\tName: Munzirul Alom\t\tID: 19202103303\t\tEmail: cse.alomb008@gmail.com\n");
+    printf("\n\n\t\t\t\t\t\t");
+    printf("\t\t\t\t\t\t :::::::::: Hotel Management System ::::::::::\n\n");
+    printf("\t\t\t\t\t\t Name: D.M. Ajmain Shariar\tID: 19202103308\t\tEmail: ajmainshariar77@gmail.com\n");
+    printf("\t\t\t\t\t\t Name: MD Mahabub Morshed\tID: 19202103298\t\tEmail: mdmahabubmorshed876@gmail.com\n");
+    printf("\t\t\t\t\t\t Name: Munzirul Alom\t\tID: 19202103303\t\tEmail: cse.alomb008@gmail.com\n");
 
     getch();
     main_menu(1);
@@ -144,23 +173,24 @@ void contact()
 */
 void registration(int n)
 {
+    top();
     if(n==1)
     {
         n=0;
         FILE *reg;
         reg = fopen("admin.txt", "ab+");
 
-        printf("Enter username: ");scanf("%s", &admin_nfo.username);
-        printf("Enter your name: ");scanf("%s", &admin_nfo.name);
-        printf("Enter your email: ");scanf("%s", &admin_nfo.email);
-        printf("Enter a password: ");scanf("%s", &admin_nfo.password);
-        printf("Enter your nationality: ");scanf("%s", &admin_nfo.nationality);
+        printf("\t\t\t\t\t\t Enter username: ");scanf("%s", &admin_nfo.username);
+        printf("\t\t\t\t\t\t Enter your name: ");scanf("%s", &admin_nfo.name);
+        printf("\t\t\t\t\t\t Enter your email: ");scanf("%s", &admin_nfo.email);
+        printf("\t\t\t\t\t\t Enter a password: ");scanf("%s", &admin_nfo.password);
+        printf("\t\t\t\t\t\t Enter your nationality: ");scanf("%s", &admin_nfo.nationality);
 
         fwrite(&admin_nfo, sizeof(admin_nfo), 1, reg);
         fclose(reg);
 
-        printf("\nRegistration Successful\n\n");
-        printf("Press any key to Login...");
+        printf("\t\t\t\t\t\tRegistration Successful\n\n");
+        printf("\t\t\t\t\t\t Press any key to Login...");
         getch();
         system("cls");
         login(1);
@@ -171,19 +201,19 @@ void registration(int n)
         FILE *reg;
         reg = fopen("user.txt", "ab+");
 
-        printf("Enter username: ");scanf("%s", &user_info.username);
-        printf("Enter your name: ");scanf("%s", &user_info.name);
-        printf("Enter your email: ");scanf("%s", &user_info.email);
-        printf("Enter a password: ");scanf("%s", &user_info.password);
-        printf("Enter your NID/Passport no: ");scanf("%s", &user_info.nid);
-        printf("Enter your address: ");scanf("%s", &user_info.address);
-        printf("Enter your nationality: ");scanf("%s", &user_info.nationality);
+        printf("\t\t\t\t\t\t Enter username: ");scanf("%s", &user_info.username);
+        printf("\t\t\t\t\t\t Enter your name: ");scanf("%s", &user_info.name);
+        printf("\t\t\t\t\t\t Enter your email: ");scanf("%s", &user_info.email);
+        printf("\t\t\t\t\t\t Enter a password: ");scanf("%s", &user_info.password);
+        printf("\t\t\t\t\t\t Enter your NID/Passport no: ");scanf("%s", &user_info.nid);
+        printf("\t\t\t\t\t\t Enter your address: ");scanf("%s", &user_info.address);
+        printf("\t\t\t\t\t\t Enter your nationality: ");scanf("%s", &user_info.nationality);
 
         fwrite(&user_info, sizeof(user_info), 1, reg);
         fclose(reg);
 
-        printf("\nRegistration Successful\n\n");
-        printf("Press any key to Login...");
+        printf("\t\t\t\t\t\tRegistration Successful\n\n");
+        printf("\t\t\t\t\t\t Press any key to Login...");
         getch();
         system("cls");
         login(2);
@@ -197,6 +227,7 @@ void registration(int n)
 */
 void login(int n)
 {
+    top();
     char password[100];
     int flag;
     FILE *log;
@@ -208,19 +239,19 @@ void login(int n)
 
         if (log == NULL)
         {
-            printf("Error: Unable to open file.\n");
+            printf("\t\t\t\t\t\t Error: Unable to open file.\n");
             exit(1);
         }
 
-        printf("Username: ");scanf("%s", &username);
-        printf("Password: ");scanf("%s", &password);
+        printf("\t\t\t\t\t\t Username: ");scanf("%s", &username);
+        printf("\t\t\t\t\t\t Password: ");scanf("%s", &password);
 
         while(fread(&admin_nfo, sizeof(admin_nfo), 1, log) && flag==0)
         {
             if(strcmp(admin_nfo.username,username)==0 && strcmp(admin_nfo.password,password) == 0)
             {
                 flag=1;
-                printf("\nAdmin Login Successful\n\n");
+                printf("\n\t\t\t\t\t\tAdmin Login Successful\n\n");
             }
         }
         fclose(log);
@@ -228,7 +259,7 @@ void login(int n)
             main_menu(1);
         else if(flag==0)
         {
-            printf("Incorrect Username or Password. Please Try again\nPress any key to try again...");
+            printf("\t\t\t\t\t\t Incorrect Username or Password. Please Try again\nPress any key to try again...");
             getch();
             system("cls");
             login(1);
@@ -241,19 +272,19 @@ void login(int n)
 
         if (log == NULL)
         {
-            printf("Error: Unable to open file.\n");
+            printf("\t\t\t\t\t\t Error: Unable to open file.\n");
             exit(1);
         }
 
-        printf("Username: ");scanf("%s", &username);
-        printf("Password: ");scanf("%s", &password);
+        printf("\t\t\t\t\t\t Username: ");scanf("%s", &username);
+        printf("\t\t\t\t\t\t Password: ");scanf("%s", &password);
 
         while(fread(&user_info, sizeof(user_info), 1, log) && flag==0)
         {
             if(strcmp(username,user_info.username)==0 && strcmp(password,user_info.password) == 0)
             {
                 flag=1;
-                printf("\nUser Login Successful\n\n");
+                printf("\n\t\t\t\t\t\tUser Login Successful\n\n");
             }
         }
         fclose(log);
@@ -262,7 +293,7 @@ void login(int n)
             main_menu(2);
         else if(flag == 0)
         {
-            printf("Incorrect Username or Password. Please Try again\nPress any key to try again...");
+            printf("\t\t\t\t\t\t Incorrect Username or Password. Please Try again\nPress any key to try again...");
             getch();
             system("cls");
             login(2);
@@ -280,67 +311,44 @@ int main()
 {
     int n;
 
-    int x; double y;
-    char text1[]=    "\t\t\t:::::::::::::::::::::::::::::::::::::::::::::\n\t\t\t:::::::::::::::::::::::::::::::::::::::::::::\n\t\t\t::                                         ::\n\t\t\t::                                         ::\n\t\t\t:::::::::: Hotel Management System ::::::::::\n\t\t\t::                                         ::\n\t\t\t::                                         ::\n\t\t\t:::::::::::::::::::::::::::::::::::::::::::::\n\t\t\t:::::::::::::::::::::::::::::::::::::::::::::\n\n\n";
-    char text2[]=    "\t\t\t\t1. Admin System\n\t\t\t\t2. User System\n\n";
-    char text3[]=    "\t\t\t\tEnter your choice: ";
-    printf("\n\n");
-    for(x=0; text1[x]!=NULL; x++)
-    {
-        printf("%c",text1[x]);
-        for(y=0; y<=1111111; y++)
-        {
-        }
-    }
-    printf("\n\n");
-    for(x=0; text2[x]!=NULL; x++)
-    {
-        printf("%c",text2[x]);
-        for(y=0; y<=4444444; y++)
-        {
-        }
-    }
-    printf("\n\n");
-    for(x=0; text3[x]!=NULL; x++)
-    {
-        printf("%c",text3[x]);
-        for(y=0; y<=9999999; y++)
-        {
-        }
-    }
+    top();
+    printf("\t\t\t\t\t\t 1. Admin System\n");
+    printf("\t\t\t\t\t\t 2. User System\n\n");
+    printf("\t\t\t\t\t\tEnter choice: ");
     scanf("%d", &n);
 
     system("cls");
+    top();
     if(n==1) //Admin Login and Registration
     {
         n=0;
-        printf("1. Login\n");
-        printf("2. Registration\n");
-        printf("Enter choice: ");scanf("%d", &n);
+        printf("\t\t\t\t\t\t 1. Login\n");
+        printf("\t\t\t\t\t\t 2. Registration\n");
+        printf("\t\t\t\t\t\t Enter choice: ");scanf("%d", &n);
         system("cls");
         if(n==1)
             login(1);
         else if(n==2)
             registration(1);
         else
-            printf("Error: Invalid input");
+            printf("\t\t\t\t\t\t Error: Invalid input");
     }
     else if(n==2) //User Login and Registration
     {
         n=0;
-        printf("1. Login\n");
-        printf("2. Registration\n");
-        printf("Enter choice: ");scanf("%d", &n);
+        printf("\t\t\t\t\t\t 1. Login\n");
+        printf("\t\t\t\t\t\t 2. Registration\n");
+        printf("\t\t\t\t\t\t Enter choice: ");scanf("%d", &n);
         system("cls");
         if(n==1)
             login(2);
         else if(n==2)
             registration(2);
         else
-            printf("Error: Invalid input");
+            printf("\t\t\t\t\t\t Error: Invalid input");
     }
     else
-        printf("Error: Invalid input");
+        printf("\t\t\t\t\t\t Error: Invalid input");
 
     return 0;
 }
@@ -353,60 +361,51 @@ int main()
 void main_menu(int n)
 {
     system("cls");
+    top();
 
     if(n==1) //Admin Main Menu
     {
         n=0;
         int m;
-        printf("::::::::::Admin Menu::::::::::\n\n");
-        printf("1. Hotel Name\n");
-        printf("2. Hotel Features\n");
-        printf("3. Location\n");
-        printf("4. Checkout\n");
-        printf("5. Order\n");
-        printf("6. Room\n");
-        printf("7. Food\n");
-        printf("8. Employee\n");
-        printf("9. User\n");
-        printf("10. Payment\n");
-        printf("11. Contact\n");
-        printf("12. Logout\n\n");
-        printf("Enter Choice: ");scanf("%d", &m);
+        printf("\t\t\t\t\t\t ::::::::::Admin Menu::::::::::\n\n");
+        printf("\t\t\t\t\t\t 1. Hotel\n");
+        printf("\t\t\t\t\t\t 2. Checkout\n");
+        printf("\t\t\t\t\t\t 3. Order\n");
+        printf("\t\t\t\t\t\t 4. Room\n");
+        printf("\t\t\t\t\t\t 5. Food\n");
+        printf("\t\t\t\t\t\t 6. Employee\n");
+        printf("\t\t\t\t\t\t 7. User\n");
+        printf("\t\t\t\t\t\t 8. Hotel Info\n");
+        printf("\t\t\t\t\t\t 9. Contact\n");
+        printf("\t\t\t\t\t\t 10. Logout\n\n");
+        printf("\t\t\t\t\t\t Enter Choice: ");scanf("%d", &m);
 
         switch(m)
         {
         case 1:
-            printf("Hotel Name Function");
-            getch();
+            hotel_info();
             main_menu(1);
             break;
         case 2:
             system("cls");
-            //hotel_features();
+            top();
+            printf("\t\t\t\t\t\t ::::::::::Checkout Room::::::::::\n\n");
+            printf("\t\t\t\t\t\t Enter Room No: ");scanf("%d", &item_id);
+            order_room_update(0); //Update Room Status to Avalabile
+            printf("\t\t\t\t\t\t Room no: %d checkout successful. Press any key to continue.....", item_id);
+            getch();
+            main_menu(1);
             break;
         case 3:
-            printf("Location Function......");
-            getch();
-            main_menu(1);
-            break;
-        case 4:
-            system("cls");
-            printf("::::::::::Checkout Room::::::::::\n\n");
-            printf("Enter Room No: ");scanf("%d", &item_id);
-            order_room_update(0); //Update Room Status to Avalabile
-            printf("\n\nRoom no: %d checkout successful. Press any key to continue.....", item_id);
-            getch();
-            main_menu(1);
-            break;
-        case 5:
             m=0;
             system("cls");
-            printf("1. Search by ID\n");
-            printf("2. Confirmed Order List\n");
-            printf("3. Pending Order List\n");
-            printf("4. Update Order\n");
-            printf("5. Main Menu\n\n");
-            printf("Enter choice: ");scanf("%d", &m);
+            top();
+            printf("\t\t\t\t\t\t 1. Search by ID\n");
+            printf("\t\t\t\t\t\t 2. Confirmed Order List\n");
+            printf("\t\t\t\t\t\t 3. Pending Order List\n");
+            printf("\t\t\t\t\t\t 4. Update Order\n");
+            printf("\t\t\t\t\t\t 5. Main Menu\n\n");
+            printf("\t\t\t\t\t\t Enter choice: ");scanf("%d", &m);
 
             if(m==1) order_search(0);
             else if(m==2) order_search(1);
@@ -416,32 +415,33 @@ void main_menu(int n)
             getch();
             main_menu(1);
             break;
-        case 6:
+        case 4:
             room_menu(1);
             break;
-        case 7:
+        case 5:
             food_menu(1);
             break;
-        case 8:
+        case 6:
             employee_menu(1);
             getch();
             main_menu(1);
             break;
-        case 9:
+        case 7:
             user_menu(1);
             break;
-        case 10:
-            printf("Payment Function.....");
+        case 8:
+            dis_hotel_info();
+            main_menu(1);
             break;
-        case 11:
+        case 9:
             contact();
             break;
-        case 12:
+        case 10:
             system("CLS");
             main();
             break;
         default:
-            printf("Error: Invalid input...");
+            printf("\t\t\t\t\t\t Error: Invalid input...");
         }
 
     }
@@ -449,13 +449,14 @@ void main_menu(int n)
     {
         n=0;
         int m;
-        printf(":::::::::User Menu::::::::::\n\n");
-        printf("1. Book Room\n");
-        printf("2. Order Food\n");
-        printf("3. Order History\n");
-        printf("4. User Profile\n");
-        printf("5. Logout\n\n");
-        printf("Enter choice: ");scanf("%d", &m);
+        printf("\t\t\t\t\t\t :::::::::User Menu::::::::::\n\n");
+        printf("\t\t\t\t\t\t 1. Book Room\n");
+        printf("\t\t\t\t\t\t 2. Order Food\n");
+        printf("\t\t\t\t\t\t 3. Order History\n");
+        printf("\t\t\t\t\t\t 4. User Profile\n");
+        printf("\t\t\t\t\t\t 5. Hotel Info\n");
+        printf("\t\t\t\t\t\t 6. Logout\n\n");
+        printf("\t\t\t\t\t\t Enter choice: ");scanf("%d", &m);
 
         switch(m)
         {
@@ -472,28 +473,114 @@ void main_menu(int n)
                 break;
             case 4:
                 system("cls");
+                top();
                 m=0;
-                printf("1. View Profile\n");
-                printf("2. Edit Profile\n");
-                printf("3. Change Password\n");
-                printf("Enter your choice: ");scanf("%d", &m);
+                printf("\t\t\t\t\t\t 1. View Profile\n");
+                printf("\t\t\t\t\t\t 2. Edit Profile\n");
+                printf("\t\t\t\t\t\t 3. Change Password\n");
+                printf("\t\t\t\t\t\t Enter your choice: ");scanf("%d", &m);
 
                 if(m==1) user_search(2);
                 else if(m==2) update_user(2);
                 else if(m==3) update_user(3);
-                else printf("Invalid Input...");
+                else printf("\t\t\t\t\t\t Invalid Input...");
                 getch();
                 main_menu(2);
                 break;
             case 5:
+                dis_hotel_info();
+                main_menu(2);
+                break;
+            case 6:
                 system("cls");
                 main();
                 break;
             default:
-                printf("Error! Invalid input.");
+                printf("\t\t\t\t\t\t Error! Invalid input.");
         }
     }
 
+}
+
+/*
+    ==================================================================================
+                                    Hotel Function
+    ==================================================================================
+*/
+void hotel_info(int n)
+{
+    system("cls");
+    top();
+
+    printf("\t\t\t\t\t\t ::::::::::Update Hotel Information ::::::::::\n\n");
+
+    FILE *fptr;
+    FILE *temp;
+
+    char filename[15]="hotel.txt";
+
+    fptr  = fopen(filename, "rb+");
+    temp = fopen("temp-hotel.tmp", "wb+");
+
+    if (fptr == NULL || temp == NULL)
+    {
+        printf("\t\t\t\t\t\t Error: Unable to open file.\n");
+        exit(1);
+    }
+
+    rewind(fptr);
+
+    while(fread(&hotel_inf, sizeof(hotel_inf), 1, fptr))
+    {
+        printf("\t\t\t\t\t\t Update Hotel Name: ");scanf("%s", &hotel_inf.name);
+        printf("\t\t\t\t\t\t Update Hotel Features: ");scanf("%s", &hotel_inf.features);
+        printf("\t\t\t\t\t\t Update Hotel Phone No: ");scanf("%s", &hotel_inf.phone);
+        printf("\t\t\t\t\t\t Update Hotel Email: ");scanf("%s", &hotel_inf.email);
+        printf("\t\t\t\t\t\t Update Hotel Location: ");scanf("%s", &hotel_inf.location);
+
+        fwrite(&hotel_inf, sizeof(hotel_inf), 1, temp);
+    }
+    fclose(fptr);
+    fclose(temp);
+
+    remove(filename);
+    rename("temp-hotel.tmp", filename);
+
+    printf("\n\t\t\t\t\t\t Hotel Information Update Sussefully. Press any key to continue... ");
+    getch();
+}
+
+/*
+    ==================================================================================
+                                    Display Hotel Info Function
+    ==================================================================================
+*/
+void dis_hotel_info()
+{
+    system("cls");
+    top();
+    printf("\t\t\t\t\t\t ::::::::::Hotel Information ::::::::::\n\n");
+
+    FILE *fptr;
+
+    fptr  = fopen("hotel.txt", "rb");
+
+    if (fptr == NULL)
+    {
+        printf("\t\t\t\t\t\t Error: Unable to open file.\n");
+        exit(1);
+    }
+
+    while(fread(&hotel_inf, sizeof(hotel_inf), 1, fptr))
+    {
+        printf("\t\t\t\t\t\t Enter Hotel Name: %s\n", hotel_inf.name);
+        printf("\t\t\t\t\t\t Enter Hotel Features: %s\n", hotel_inf.features);
+        printf("\t\t\t\t\t\t Enter Hotel Phone No: %s\n", hotel_inf.phone);
+        printf("\t\t\t\t\t\t Enter Hotel Email: %s\n", hotel_inf.email);
+        printf("\t\t\t\t\t\t Enter Hotel Location: %s\n", hotel_inf.location);
+    }
+    fclose(fptr);
+    getch();
 }
 
 /*
@@ -509,14 +596,14 @@ void room_menu(int n)
     if(n==1) //Admin Room Menu
     {
         n=m=0;
-        printf("::::::::::Admin Room Menu::::::::::\n\n");
-        printf("1. Add Room\n");
-        printf("2. Room List\n");
-        printf("3. Update Room\n");
-        printf("4. Delete Room\n");
-        printf("5. Search Room\n");
-        printf("6. Main Menu\n\n");
-        printf("Enter choice: ");scanf("%d", &m);
+        printf("\t\t\t\t\t\t ::::::::::Admin Room Menu::::::::::\n\n");
+        printf("\t\t\t\t\t\t 1. Add Room\n");
+        printf("\t\t\t\t\t\t 2. Room List\n");
+        printf("\t\t\t\t\t\t 3. Update Room\n");
+        printf("\t\t\t\t\t\t 4. Delete Room\n");
+        printf("\t\t\t\t\t\t 5. Search Room\n");
+        printf("\t\t\t\t\t\t 6. Main Menu\n\n");
+        printf("\t\t\t\t\t\t Enter choice: ");scanf("%d", &m);
 
         switch(m)
         {
@@ -543,13 +630,14 @@ void room_menu(int n)
             break;
         case 5:
             system("cls");
+            top();
             m=0;
-            printf("1. Search by Room no\n");
-            printf("2. AC Room\n");
-            printf("3. Non AC Room\n");
-            printf("4. Available Room\n");
-            printf("5. Not Available\n");
-            printf("Enter choice: ");scanf("%d", &m);
+            printf("\t\t\t\t\t\t 1. Search by Room no\n");
+            printf("\t\t\t\t\t\t 2. AC Room\n");
+            printf("\t\t\t\t\t\t 3. Non AC Room\n");
+            printf("\t\t\t\t\t\t 4. Available Room\n");
+            printf("\t\t\t\t\t\t 5. Not Available\n");
+            printf("\t\t\t\t\t\t Enter choice: ");scanf("%d", &m);
             if(m==1) room_search(0);
             else if(m==2) room_search(1);
             else if(m==3) room_search(2);
@@ -562,17 +650,17 @@ void room_menu(int n)
             main_menu(1);
             break;
         default:
-            printf("Error: invalid input");
+            printf("\t\t\t\t\t\t Error: invalid input");
         }
     }
     else if(n==2) //User Room Menu
     {
         n=m=0;
-        printf("::::::::::User Room Menu::::::::::\n\n");
-        printf("1. AC Room\n");
-        printf("2. Non AC Room\n");
-        printf("3. Main Menu\n\n");
-        printf("Enter choice: ");scanf("%d", &m);
+        printf("\t\t\t\t\t\t ::::::::::User Room Menu::::::::::\n\n");
+        printf("\t\t\t\t\t\t 1. AC Room\n");
+        printf("\t\t\t\t\t\t 2. Non AC Room\n");
+        printf("\t\t\t\t\t\t 3. Main Menu\n\n");
+        printf("\t\t\t\t\t\t Enter choice: ");scanf("%d", &m);
 
         switch (m)
         {
@@ -586,7 +674,7 @@ void room_menu(int n)
             main_menu(2);
             break;
         default:
-            printf("Error: Invalid Input");
+            printf("\t\t\t\t\t\t Error: Invalid Input");
         }
 
 
@@ -602,23 +690,24 @@ void room_menu(int n)
 void add_room()
 {
     system("cls");
+    top();
     FILE *fptr = fopen("room.txt", "ab+");
 
     struct room add;
 
-    printf("::::::::::Add New Room::::::::::\n\n");
-    printf("Enter Room No: ");scanf("%d", &add.no);
-    printf("Enter Room Name: ");scanf("%s", &add.name);
-    printf("Enter Room Features: ");scanf("%s", &add.features);
-    printf("Enter Room Type (1. AC or 2. Non AC): ");scanf("%d", &add.type);
-    printf("Enter Room Price: ");scanf("%d", &add.price);
+    printf("\t\t\t\t\t\t ::::::::::Add New Room::::::::::\n\n");
+    printf("\t\t\t\t\t\t Enter Room No: ");scanf("%d", &add.no);
+    printf("\t\t\t\t\t\t Enter Room Name: ");scanf("%s", &add.name);
+    printf("\t\t\t\t\t\t Enter Room Features: ");scanf("%s", &add.features);
+    printf("\t\t\t\t\t\t Enter Room Type (1. AC or 2. Non AC): ");scanf("%d", &add.type);
+    printf("\t\t\t\t\t\t Enter Room Price: ");scanf("%d", &add.price);
     add.status = 0;
 
     fwrite(&add, sizeof(add), 1, fptr);
     fclose(fptr);
 
-    printf("\n\n\nRoom No: %d\t|\tRoom Name: %s\t|\tRoom Features: %s\t|\tRoom Type: %d\t|\tRoom Price: %d tk\n\n", add.no, add.name, add.features, add.type, add.price);
-    printf("Room Added Successful!\nPress any key to go Menu\n");
+    printf("\n\n\n\t\t\t\t\t\tRoom No: %d\t|\tRoom Name: %s\t|\tRoom Features: %s\t|\tRoom Type: %d\t|\tRoom Price: %d tk\n\n", add.no, add.name, add.features, add.type, add.price);
+    printf("\t\t\t\t\t\t Room Added Successful! Press any key to go Menu\n");
 
 }
 
@@ -633,12 +722,12 @@ void room_list()
 
     if(fptr == NULL)
     {
-        printf("Error: Unable to open file.");
+        printf("\t\t\t\t\t\t Error: Unable to open file.");
         exit(1);
     }
     struct room list;
 
-    printf("::::::::::Room List::::::::::\n\n");
+    printf("\t\t\t\t\t\t ::::::::::Room List::::::::::\n\n");
     while(fread(&list, sizeof(list), 1, fptr))
     {
         printf("Room No: %d", list.no);
@@ -684,11 +773,11 @@ void update_room()
 
     if (main_file == NULL || temp_file == NULL)
     {
-        printf("Unable to open file.\n");
+        printf("\t\t\t\t\t\t Unable to open file.\n");
         exit(1);
     }
 
-    printf("Replace Room No: ");
+    printf("\t\t\t\t\t\t Replace Room No: ");
     scanf("%d", &delete_line);
 
     rewind(main_file);
@@ -699,11 +788,11 @@ void update_room()
             fwrite(&add, sizeof(add), 1, temp_file);
         else if(add.no == delete_line)
         {
-            printf("Updated Room No: ");scanf("%d", &add.no);
-            printf("Updated Room Name: ");scanf("%s", &add.name);
-            printf("Updated Room Features: ");scanf("%s", &add.features);
-            printf("Updated Room Type (1. AC or 2. Non AC): ");scanf("%d", &add.type);
-            printf("Updated Room Price: ");scanf("%d", &add.price);
+            printf("\t\t\t\t\t\t Updated Room No: ");scanf("%d", &add.no);
+            printf("\t\t\t\t\t\t Updated Room Name: ");scanf("%s", &add.name);
+            printf("\t\t\t\t\t\t Updated Room Features: ");scanf("%s", &add.features);
+            printf("\t\t\t\t\t\t Updated Room Type (1. AC or 2. Non AC): ");scanf("%d", &add.type);
+            printf("\t\t\t\t\t\t Updated Room Price: ");scanf("%d", &add.price);
 
             fwrite(&add, sizeof(add), 1, temp_file);
         }
@@ -716,7 +805,7 @@ void update_room()
     rename("temp-file.tmp", filename);
 
     printf("\n\n");
-    printf("::::::::::After Update::::::::::");
+    printf("\t\t\t\t\t\t ::::::::::After Update::::::::::");
     room_list();
 }
 
@@ -740,13 +829,13 @@ void delete_room()
 
     if (main_file == NULL || temp_file == NULL)
     {
-        printf("Unable to open file.\n");
+        printf("\t\t\t\t\t\t Unable to open file.\n");
         exit(1);
     }
 
     room_list();
 
-    printf("Delete Room No: ");
+    printf("\t\t\t\t\t\t Delete Room No: ");
     scanf("%d", &delete_line);
 
     rewind(main_file);
@@ -765,7 +854,7 @@ void delete_room()
     remove(filename);
     rename("temp-file.tmp", filename);
 
-    printf("::::::::::After Delete %d No Room::::::::::", delete_line);
+    printf("\t\t\t\t\t\t ::::::::::After Delete %d No Room::::::::::", delete_line);
     room_list();
 
     fclose(main_file);
@@ -789,14 +878,14 @@ void room_search(int n, int autho)
 
     if (fptr == NULL)
     {
-        printf("\n\nUnable to open file.\n");
+        printf("\n\n\t\t\t\t\t\tUnable to open file.\n");
         exit(1);
     }
 
     if(n==0)
     {
-        printf("::::::::::Search Room by Room no::::::::::\n\n");
-        printf("Enter Room no: ");
+        printf("\t\t\t\t\t\t ::::::::::Search Room by Room no::::::::::\n\n");
+        printf("\t\t\t\t\t\t Enter Room no: ");
         scanf("%d", &num);
         printf("\n\n");
         while(fread(&room_info, sizeof(room_info),1,fptr) == 1)
@@ -824,7 +913,7 @@ void room_search(int n, int autho)
     }
     else if(n==1)
     {
-        printf("::::::::::AC Room List::::::::::\n\n");
+        printf("\t\t\t\t\t\t ::::::::::AC Room List::::::::::\n\n");
         while(fread(&room_info, sizeof(room_info),1,fptr) == 1)
         {
             if(room_info.type == 1)
@@ -850,7 +939,7 @@ void room_search(int n, int autho)
     }
     else if(n==2)
     {
-        printf("::::::::::Non AC Room List::::::::::\n\n");
+        printf("\t\t\t\t\t\t ::::::::::Non AC Room List::::::::::\n\n");
         while(fread(&room_info, sizeof(room_info),1,fptr) == 1)
         {
             if(room_info.type == 2)
@@ -876,7 +965,7 @@ void room_search(int n, int autho)
     }
     else if(n==3)
     {
-        printf("::::::::::Available Room List::::::::::\n\n");
+        printf("\t\t\t\t\t\t ::::::::::Available Room List::::::::::\n\n");
         while(fread(&room_info, sizeof(room_info),1,fptr) == 1)
         {
             if(room_info.status == 0)
@@ -902,7 +991,7 @@ void room_search(int n, int autho)
     }
     else if(n==4)
     {
-        printf("::::::::::Not Available Room List::::::::::\n\n");
+        printf("\t\t\t\t\t\t ::::::::::Not Available Room List::::::::::\n\n");
         while(fread(&room_info, sizeof(room_info),1,fptr) == 1)
         {
             if(room_info.status == 1)
@@ -931,24 +1020,24 @@ void room_search(int n, int autho)
     if(n==1 && autho==2 && flag==1)
     {
         int id;
-        printf("Enter room ID which is you want to buy: ");scanf("%d", &id);
+        printf("\t\t\t\t\t\t Enter room ID which is you want to buy: ");scanf("%d", &id);
         order_room(id);
     }
     else if(n==2 && autho==2 && flag==1)
     {
         int id;
-        printf("Enter room ID which is you want to buy: ");scanf("%d", &id);
+        printf("\t\t\t\t\t\t Enter room ID which is you want to buy: ");scanf("%d", &id);
         order_room(id);
     }
     else if(flag==0 && autho!=2)
     {
-        printf("\nNot Found");
+        printf("\n\t\t\t\t\t\tNot Found");
         getch();
         room_menu(1);
     }
     else if(flag==0 && autho==2)
     {
-        printf("\nNot Found");
+        printf("\n\t\t\t\t\t\tNot Found");
         getch();
         room_menu(2);
     }
@@ -967,14 +1056,14 @@ void food_menu(int n)
     if(n==1) //Admin Food Menu
     {
         n=0;
-        printf("::::::::::Admin Food Menu::::::::::\n\n");
-        printf("1. Add Food\n");
-        printf("2. Food List\n");
-        printf("3. Update Food\n");
-        printf("4. Delete Food\n");
-        printf("5. Food Search\n");
-        printf("6. Main Menu\n\n");
-        printf("Enter Choice: ");scanf("%d", &m);
+        printf("\t\t\t\t\t\t ::::::::::Admin Food Menu::::::::::\n\n");
+        printf("\t\t\t\t\t\t 1. Add Food\n");
+        printf("\t\t\t\t\t\t 2. Food List\n");
+        printf("\t\t\t\t\t\t 3. Update Food\n");
+        printf("\t\t\t\t\t\t 4. Delete Food\n");
+        printf("\t\t\t\t\t\t 5. Food Search\n");
+        printf("\t\t\t\t\t\t 6. Main Menu\n\n");
+        printf("\t\t\t\t\t\t Enter Choice: ");scanf("%d", &m);
 
         switch(m)
         {
@@ -984,6 +1073,7 @@ void food_menu(int n)
             food_menu(1);
             break;
         case 2:
+            system("cls");
             food_list();
             getch();
             food_menu(1);
@@ -1001,12 +1091,12 @@ void food_menu(int n)
         case 5:
             system("cls");
             m=0;
-            printf("1. Search by Food ID\n");
-            printf("2. Breakfast List\n");
-            printf("3. Lunch List\n");
-            printf("4. Snacks List\n");
-            printf("5. Dinner List\n");
-            printf("Enter choice: ");scanf("%d", &m);
+            printf("\t\t\t\t\t\t 1. Search by Food ID\n");
+            printf("\t\t\t\t\t\t 2. Breakfast List\n");
+            printf("\t\t\t\t\t\t 3. Lunch List\n");
+            printf("\t\t\t\t\t\t 4. Snacks List\n");
+            printf("\t\t\t\t\t\t 5. Dinner List\n");
+            printf("\t\t\t\t\t\t Enter choice: ");scanf("%d", &m);
             if(m==1)food_search(0);
             else if(m==2) food_search(1);
             else if(m==3) food_search(2);
@@ -1019,20 +1109,20 @@ void food_menu(int n)
             main_menu(1);
             break;
         default:
-            printf("Error: invalid input");
+            printf("\t\t\t\t\t\t Error: invalid input");
         }
     }
     else if(n==2) //User Room Menu
     {
         n=m=0;
-        printf("::::::::::User Food Menu::::::::::\n\n");
+        printf("\t\t\t\t\t\t ::::::::::User Food Menu::::::::::\n\n");
 
-            printf("1. Breakfast List\n");
-            printf("2. Lunch List\n");
-            printf("3. Snacks List\n");
-            printf("4. Dinner List\n");
-            printf("5. Main Menu\n\n");
-            printf("Enter choice: ");scanf("%d", &m);
+            printf("\t\t\t\t\t\t 1. Breakfast List\n");
+            printf("\t\t\t\t\t\t 2. Lunch List\n");
+            printf("\t\t\t\t\t\t 3. Snacks List\n");
+            printf("\t\t\t\t\t\t 4. Dinner List\n");
+            printf("\t\t\t\t\t\t 5. Main Menu\n\n");
+            printf("\t\t\t\t\t\t Enter choice: ");scanf("%d", &m);
 
             switch(m)
             {
@@ -1052,7 +1142,7 @@ void food_menu(int n)
                 main_menu(2);
                 break;
             default:
-                printf("Error: Invalid input");
+                printf("\t\t\t\t\t\t Error: Invalid input");
             }
     }
 }
@@ -1067,18 +1157,18 @@ void add_food()
     system("cls");
     FILE *fptr = fopen("food.txt", "ab+");
 
-    printf("Enter Food Code: ");scanf("%d", &food_info.code);
-    printf("Enter Food Name: ");scanf("%s", &food_info.name);
-    printf("Enter Food Description: ");scanf("%s", &food_info.description);
-    printf("Enter Food Category(1. Breakfast, 2. Lunch 3. Snacks, 4. Dinner): ");scanf("%d", &food_info.category);
-    printf("Enter Food Price: ");scanf("%d", &food_info.price);
+    printf("\t\t\t\t\t\t Enter Food Code: ");scanf("%d", &food_info.code);
+    printf("\t\t\t\t\t\t Enter Food Name: ");scanf("%s", &food_info.name);
+    printf("\t\t\t\t\t\t Enter Food Description: ");scanf("%s", &food_info.description);
+    printf("\t\t\t\t\t\t Enter Food Category(1. Breakfast, 2. Lunch 3. Snacks, 4. Dinner): ");scanf("%d", &food_info.category);
+    printf("\t\t\t\t\t\t Enter Food Price: ");scanf("%d", &food_info.price);
     food_info.status = 0;
 
     fwrite(&food_info, sizeof(food_info), 1, fptr);
     fclose(fptr);
 
-    printf("\n\n\nFood Code %d\t|\tFood Name: %s\t|\tFood Description: %s\t|\tFood Category: %d\t|\tFood Price: %d tk\n\n", food_info.code, food_info.name, food_info.description, food_info.category, food_info.price);
-    printf("Room Added Successful!\nPress any key to go Menu\n");
+    printf("\n\n\t\t\t\t\t\tFood Code %d\t|\tFood Name: %s\t|\tFood Description: %s\t|\tFood Category: %d\t|\tFood Price: %d tk\n\n", food_info.code, food_info.name, food_info.description, food_info.category, food_info.price);
+    printf("\t\t\t\t\t\t Room Added Successful! Press any key to go Menu\n");
 
 }
 
@@ -1093,24 +1183,24 @@ void food_list()
 
     if(fptr == NULL)
     {
-        printf("Error: Unable to open file.");
+        printf("\t\t\t\t\t\t Error: Unable to open file.");
         exit(1);
     }
 
-    printf("::::::::::Food List::::::::::\n\n");
+    printf("\t\t\t\t\t\t ::::::::::Food List::::::::::\n\n");
 
     while(fread(&food_info, sizeof(food_info), 1, fptr) == 1)
     {
-        printf("Food Code: %d", food_info.code);
-        printf("\t|\t Food Name: %s", food_info.name);
-        printf("\t|\t Food Description: %s", food_info.description);
-        printf("\t|\t Food Category: ");
+        printf("\t\t\t\t\t\t Food Code: %d", food_info.code);
+        printf("\t|\tFood Name: %s", food_info.name);
+        printf("\t|\tFood Description: %s", food_info.description);
+        printf("\t|\tFood Category: ");
             if(food_info.category == 1) printf("Breakfast");
             else if(food_info.category == 2) printf("Lunch");
             else if(food_info.category == 3) printf("Snacks");
             else if(food_info.category == 4) printf("Dinner");
-        printf("\t|\t Food Price: %d", food_info.price);
-        printf("\t|\t Food Status: ");
+        printf("\t|\tFood Price: %d", food_info.price);
+        printf("\t|\tFood Status: ");
             if(food_info.status == 0) printf("Available");
             else if(food_info.status == 1) printf("Not Available");
         printf("\n\n");
@@ -1141,11 +1231,11 @@ void update_food()
 
     if (main_file == NULL || temp_file == NULL)
     {
-        printf("Unable to open file.\n");
+        printf("\t\t\t\t\t\t Unable to open file.\n");
         exit(1);
     }
 
-    printf("Enter food code which is you want to update: ");
+    printf("\t\t\t\t\t\t Enter food code which is you want to update: ");
     scanf("%d", &delete_line);
 
     rewind(main_file);
@@ -1156,11 +1246,11 @@ void update_food()
             fwrite(&food_info, sizeof(food_info), 1, temp_file);
         else if(food_info.code == delete_line)
         {
-            printf("Updated Food Code: ");scanf("%d", &food_info.code);
-            printf("Updated Food Name: ");scanf("%s", &food_info.name);
-            printf("Updated Food Description: ");scanf("%s", &food_info.description);
-            printf("Updated Food Category(1. Breakfast, 2. Lunch 3. Snacks, 4. Dinner): ");scanf("%d", &food_info.category);
-            printf("Updated Food Price: ");scanf("%d", &food_info.price);
+            printf("\t\t\t\t\t\t Updated Food Code: ");scanf("%d", &food_info.code);
+            printf("\t\t\t\t\t\t Updated Food Name: ");scanf("%s", &food_info.name);
+            printf("\t\t\t\t\t\t Updated Food Description: ");scanf("%s", &food_info.description);
+            printf("\t\t\t\t\t\t Updated Food Category(1. Breakfast, 2. Lunch 3. Snacks, 4. Dinner): ");scanf("%d", &food_info.category);
+            printf("\t\t\t\t\t\t Updated Food Price: ");scanf("%d", &food_info.price);
 
             fwrite(&food_info, sizeof(food_info), 1, temp_file);
         }
@@ -1173,7 +1263,7 @@ void update_food()
     rename("temp-file.tmp", filename);
 
     printf("\n\n");
-    printf("::::::::::After Update::::::::::");
+    printf("\t\t\t\t\t\t ::::::::::After Update::::::::::");
     food_list();
 }
 
@@ -1185,6 +1275,7 @@ void update_food()
 */
 void delete_food()
 {
+    system("cls");
     FILE *main_file;
     FILE *temp_file;
 
@@ -1196,13 +1287,13 @@ void delete_food()
 
     if (main_file == NULL || temp_file == NULL)
     {
-        printf("Unable to open file.\n");
+        printf("\t\t\t\t\t\t Unable to open file.\n");
         exit(1);
     }
 
     food_list();
 
-    printf("Enter food code which is you want to delete: ");
+    printf("\t\t\t\t\t\t Enter food code which is you want to delete: ");
     scanf("%d", &delete_line);
 
     rewind(main_file);
@@ -1221,7 +1312,7 @@ void delete_food()
     remove(filename);
     rename("temp-file.tmp", filename);
 
-    printf("::::::::::After Delete %d No Food::::::::::", delete_line);
+    printf("\t\t\t\t\t\t ::::::::::After Delete %d No Food::::::::::", delete_line);
     food_list();
 
     fclose(main_file);
@@ -1244,14 +1335,14 @@ void food_search(int n, int autho)
 
     if (fptr == NULL)
     {
-        printf("\n\nUnable to open file.\n");
+        printf("\n\n\t\t\t\t\t\tUnable to open file.\n");
         exit(1);
     }
 
     if(n==0)
     {
-        printf("::::::::::Search Food by Food ID::::::::::\n\n");
-        printf("Enter Food Code: ");
+        printf("\t\t\t\t\t\t ::::::::::Search Food by Food ID::::::::::\n\n");
+        printf("\t\t\t\t\t\t Enter Food Code: ");
         scanf("%d", &num);
         printf("\n\n");
 
@@ -1260,16 +1351,16 @@ void food_search(int n, int autho)
             if(food_info.code == num)
             {
                 flag = 1;
-                printf("Food Code: %d", food_info.code);
-                printf("\t|\t Food Name: %s", food_info.name);
-                printf("\t|\t Food Description: %s", food_info.description);
-                printf("\t|\t Food Category: ");
+                printf("\t\t\t\t\t\t Food Code: %d", food_info.code);
+                printf("\t|\tFood Name: %s", food_info.name);
+                printf("\t|\tFood Description: %s", food_info.description);
+                printf("\t|\tFood Category: ");
                     if(food_info.category == 1) printf("Breakfast");
                     else if(food_info.category == 2) printf("Lunch");
                     else if(food_info.category == 3) printf("Snacks");
                     else if(food_info.category == 4) printf("Dinner");
-                printf("\t|\t Food Price: %d", food_info.price);
-                printf("\t|\t Food Status: ");
+                printf("\t|\tFood Price: %d", food_info.price);
+                printf("\t|\tFood Status: ");
                     if(food_info.status == 0) printf("Available");
                     else if(food_info.status == 1) printf("Not Available");
                 printf("\n\n");
@@ -1278,22 +1369,22 @@ void food_search(int n, int autho)
     }
     else if(n==1)
     {
-        printf("::::::::::Breakfast Food List::::::::::\n\n");
+        printf("\t\t\t\t\t\t ::::::::::Breakfast Food List::::::::::\n\n");
         while(fread(&food_info, sizeof(food_info),1,fptr) == 1)
         {
             if(food_info.category == 1)
             {
                 flag = 1;
-                printf("Food Code: %d", food_info.code);
-                printf("\t|\t Food Name: %s", food_info.name);
-                printf("\t|\t Food Description: %s", food_info.description);
-                printf("\t|\t Food Category: ");
+                printf("\t\t\t\t\t\t Food Code: %d", food_info.code);
+                printf("\t|\tFood Name: %s", food_info.name);
+                printf("\t|\tFood Description: %s", food_info.description);
+                printf("\t|\tFood Category: ");
                     if(food_info.category == 1) printf("Breakfast");
                     else if(food_info.category == 2) printf("Lunch");
                     else if(food_info.category == 3) printf("Snacks");
                     else if(food_info.category == 4) printf("Dinner");
-                printf("\t|\t Food Price: %d", food_info.price);
-                printf("\t|\t Food Status: ");
+                printf("\t|\tFood Price: %d", food_info.price);
+                printf("\t|\tFood Status: ");
                     if(food_info.status == 0) printf("Available");
                     else if(food_info.status == 1) printf("Not Available");
                 printf("\n\n");
@@ -1302,28 +1393,28 @@ void food_search(int n, int autho)
         if(autho==2 && flag==1)
         {
             int buy;
-            printf("Enter food ID which is you want to buy: ");scanf("%d", &buy);
+            printf("\t\t\t\t\t\t Enter food ID which is you want to buy: ");scanf("%d", &buy);
             order_food(buy);
         }
     }
     else if(n==2)
     {
-        printf("::::::::::Lunch Food List::::::::::\n\n");
+        printf("\t\t\t\t\t\t ::::::::::Lunch Food List::::::::::\n\n");
         while(fread(&food_info, sizeof(food_info),1,fptr) == 1)
         {
             if(food_info.category == 2)
             {
                 flag = 1;
-                printf("Food Code: %d", food_info.code);
-                printf("\t|\t Food Name: %s", food_info.name);
-                printf("\t|\t Food Description: %s", food_info.description);
-                printf("\t|\t Food Category: ");
+                printf("\t\t\t\t\t\t Food Code: %d", food_info.code);
+                printf("\t|\tFood Name: %s", food_info.name);
+                printf("\t|\tFood Description: %s", food_info.description);
+                printf("\t|\tFood Category: ");
                     if(food_info.category == 1) printf("Breakfast");
                     else if(food_info.category == 2) printf("Lunch");
                     else if(food_info.category == 3) printf("Snacks");
                     else if(food_info.category == 4) printf("Dinner");
-                printf("\t|\t Food Price: %d", food_info.price);
-                printf("\t|\t Food Status: ");
+                printf("\t|\tFood Price: %d", food_info.price);
+                printf("\t|\tFood Status: ");
                     if(food_info.status == 0) printf("Available");
                     else if(food_info.status == 1) printf("Not Available");
                 printf("\n\n");
@@ -1332,28 +1423,28 @@ void food_search(int n, int autho)
         if(autho==2 && flag==1)
         {
             int buy;
-            printf("Enter food ID which is you want to buy: ");scanf("%d", &buy);
+            printf("\t\t\t\t\t\t Enter food ID which is you want to buy: ");scanf("%d", &buy);
             order_food(buy);
         }
     }
     else if(n==3)
     {
-        printf("::::::::::Snacks Food List::::::::::\n\n");
+        printf("\t\t\t\t\t\t ::::::::::Snacks Food List::::::::::\n\n");
         while(fread(&food_info, sizeof(food_info),1,fptr) == 1)
         {
             if(food_info.category == 3)
             {
                 flag = 1;
-                printf("Food Code: %d", food_info.code);
-                printf("\t|\t Food Name: %s", food_info.name);
-                printf("\t|\t Food Description: %s", food_info.description);
-                printf("\t|\t Food Category: ");
+                printf("\t\t\t\t\t\t Food Code: %d", food_info.code);
+                printf("\t|\tFood Name: %s", food_info.name);
+                printf("\t|\tFood Description: %s", food_info.description);
+                printf("\t|\tFood Category: ");
                     if(food_info.category == 1) printf("Breakfast");
                     else if(food_info.category == 2) printf("Lunch");
                     else if(food_info.category == 3) printf("Snacks");
                     else if(food_info.category == 4) printf("Dinner");
-                printf("\t|\t Food Price: %d", food_info.price);
-                printf("\t|\t Food Status: ");
+                printf("\t|\tFood Price: %d", food_info.price);
+                printf("\t|\tFood Status: ");
                     if(food_info.status == 0) printf("Available");
                     else if(food_info.status == 1) printf("Not Available");
                 printf("\n\n");
@@ -1362,28 +1453,28 @@ void food_search(int n, int autho)
         if(autho==2 && flag==1)
         {
             int buy;
-            printf("Enter food ID which is you want to buy: ");scanf("%d", &buy);
+            printf("\t\t\t\t\t\t Enter food ID which is you want to buy: ");scanf("%d", &buy);
             order_food(buy);
         }
     }
     else if(n==4)
     {
-        printf("::::::::::Dinner Food List::::::::::\n\n");
+        printf("\t\t\t\t\t\t ::::::::::Dinner Food List::::::::::\n\n");
         while(fread(&food_info, sizeof(food_info),1,fptr) == 1)
         {
             if(food_info.category == 4)
             {
                 flag = 1;
-                printf("Food Code: %d", food_info.code);
-                printf("\t|\t Food Name: %s", food_info.name);
-                printf("\t|\t Food Description: %s", food_info.description);
-                printf("\t|\t Food Category: ");
+                printf("\t\t\t\t\t\t Food Code: %d", food_info.code);
+                printf("\t|\tFood Name: %s", food_info.name);
+                printf("\t|\tFood Description: %s", food_info.description);
+                printf("\t|\tFood Category: ");
                     if(food_info.category == 1) printf("Breakfast");
                     else if(food_info.category == 2) printf("Lunch");
                     else if(food_info.category == 3) printf("Snacks");
                     else if(food_info.category == 4) printf("Dinner");
-                printf("\t|\t Food Price: %d", food_info.price);
-                printf("\t|\t Food Status: ");
+                printf("\t|\tFood Price: %d", food_info.price);
+                printf("\t|\tFood Status: ");
                     if(food_info.status == 0) printf("Available");
                     else if(food_info.status == 1) printf("Not Available");
                 printf("\n\n");
@@ -1392,20 +1483,20 @@ void food_search(int n, int autho)
         if(autho==2 && flag==1)
         {
             int buy;
-            printf("Enter food ID which is you want to buy: ");scanf("%d", &buy);
+            printf("\t\t\t\t\t\t Enter food ID which is you want to buy: ");scanf("%d", &buy);
             order_food(buy);
         }
     }
 
     if(flag==0 && autho!=2)
     {
-        printf("\nNot Found");
+        printf("\n\t\t\t\t\t\tNot Found");
         getch();
         food_menu(1);
     }
     else if(flag==0 && autho==2)
     {
-        printf("\nNot Found");
+        printf("\n\t\t\t\t\t\tNot Found");
         getch();
         food_menu(2);
     }
@@ -1425,13 +1516,13 @@ void user_menu(int n)
     if(n==1) //Admin User Menu
     {
         n=m=0;
-        printf("::::::::::Admin User Menu::::::::::\n\n");
-        printf("1. User List\n");
-        printf("2. Update User\n");
-        printf("3. Delete User\n");
-        printf("4. Search User\n");
-        printf("5. Main Menu\n\n");
-        printf("Enter choice: ");scanf("%d", &m);
+        printf("\t\t\t\t\t\t ::::::::::Admin User Menu::::::::::\n\n");
+        printf("\t\t\t\t\t\t 1. User List\n");
+        printf("\t\t\t\t\t\t 2. Update User\n");
+        printf("\t\t\t\t\t\t 3. Delete User\n");
+        printf("\t\t\t\t\t\t 4. Search User\n");
+        printf("\t\t\t\t\t\t 5. Main Menu\n\n");
+        printf("\t\t\t\t\t\t Enter choice: ");scanf("%d", &m);
 
         switch(m)
         {
@@ -1460,17 +1551,17 @@ void user_menu(int n)
             main_menu(1);
             break;
         default:
-            printf("Error: invalid input");
+            printf("\t\t\t\t\t\t Error: invalid input");
         }
     }
     else if(n==2) //User Room Menu
     {
         n=m=0;
-        printf("::::::::::User Room Menu::::::::::\n\n");
-        printf("1. AC Room\n");
-        printf("2. Non AC Room\n");
-        printf("3. Main Menu\n\n");
-        printf("Enter choice: ");scanf("%d", &m);
+        printf("\t\t\t\t\t\t ::::::::::User Room Menu::::::::::\n\n");
+        printf("\t\t\t\t\t\t 1. AC Room\n");
+        printf("\t\t\t\t\t\t 2. Non AC Room\n");
+        printf("\t\t\t\t\t\t 3. Main Menu\n\n");
+        printf("\t\t\t\t\t\t Enter choice: ");scanf("%d", &m);
 
         switch (m)
         {
@@ -1484,7 +1575,7 @@ void user_menu(int n)
             main_menu(2);
             break;
         default:
-            printf("Error: Invalid Input");
+            printf("\t\t\t\t\t\t Error: Invalid Input");
         }
 
 
@@ -1503,14 +1594,14 @@ void user_list()
 
     if(fptr == NULL)
     {
-        printf("Error: Unable to open file.");
+        printf("\t\t\t\t\t\t Error: Unable to open file.");
         exit(1);
     }
 
-    printf("::::::::::User List::::::::::\n\n");
+    printf("\t\t\t\t\t\t ::::::::::User List::::::::::\n\n");
     while(fread(&user_info, sizeof(user_info), 1, fptr))
     {
-        printf("Username: %s", user_info.username);
+        printf("\t Username: %s", user_info.username);
         printf("\t|\tName: %s", user_info.name);
         printf("\t|\tEmail: %s", user_info.email);
         printf("\t|\tNID: %s", user_info.nid);
@@ -1544,7 +1635,7 @@ void update_user(int n)
 
     if (main_file == NULL || temp_file == NULL)
     {
-        printf("Unable to open file.\n");
+        printf("\t\t\t\t\t\t Unable to open file.\n");
         exit(1);
     }
     rewind(main_file);
@@ -1552,7 +1643,7 @@ void update_user(int n)
     if(n==1) //Admin User Update Function
     {
         char up_username[50];
-        printf("Enter username which is you want to update: ");
+        printf("\t\t\t\t\t\t Enter username which is you want to update: ");
         scanf("%s", &up_username);
 
         while(fread(&user_info, sizeof(user_info),1,main_file) == 1)
@@ -1561,13 +1652,13 @@ void update_user(int n)
                 fwrite(&user_info, sizeof(user_info), 1, temp_file);
             else if(strcmp(user_info.username,up_username) == 0)
             {
-                printf("Username: %s *Usernames cannot be changed\n", user_info.username);
-                printf("Update Name: ");scanf("%s", &user_info.name);
-                printf("Update Email: ");scanf("%s", &user_info.email);
-                printf("NID/Passport No: ");scanf("%s", &user_info.nid);
-                printf("Update Address: ");scanf("%s", &user_info.address);
-                printf("Update Nationality: ");scanf("%s", &user_info.nationality);
-                printf("Update Password: ");scanf("%s", &user_info.password);
+                printf("\t\t\t\t\t\t Username: %s *Usernames cannot be changed\n", user_info.username);
+                printf("\t\t\t\t\t\t Update Name: ");scanf("%s", &user_info.name);
+                printf("\t\t\t\t\t\t Update Email: ");scanf("%s", &user_info.email);
+                printf("\t\t\t\t\t\t NID/Passport No: ");scanf("%s", &user_info.nid);
+                printf("\t\t\t\t\t\t Update Address: ");scanf("%s", &user_info.address);
+                printf("\t\t\t\t\t\t Update Nationality: ");scanf("%s", &user_info.nationality);
+                printf("\t\t\t\t\t\t Update Password: ");scanf("%s", &user_info.password);
 
                 fwrite(&user_info, sizeof(user_info), 1, temp_file);
             }
@@ -1575,29 +1666,29 @@ void update_user(int n)
     }
     else if(n==2) //User Profile Update Function
     {
-        printf("::::::::::Update Profile::::::::::\n\n");
+        printf("\t\t\t\t\t\t ::::::::::Update Profile::::::::::\n\n");
         while(fread(&user_info, sizeof(user_info),1,main_file) == 1)
         {
             if(strcmp(user_info.username,username) != 0)
                 fwrite(&user_info, sizeof(user_info), 1, temp_file);
             else if(strcmp(user_info.username,username) == 0)
             {
-                printf("Username: %s *Usernames cannot be changed\n", user_info.username);
-                printf("Update Name: ");scanf("%s", &user_info.name);
-                printf("Update Email: ");scanf("%s", &user_info.email);
-                printf("NID/Passport No: %s *NID/Passport cannot be changed\n", user_info.nid);
-                printf("Update Address: ");scanf("%s", &user_info.address);
-                printf("Update Nationality: ");scanf("%s", &user_info.nationality);
+                printf("\t\t\t\t\t\t Username: %s *Usernames cannot be changed\n", user_info.username);
+                printf("\t\t\t\t\t\t Update Name: ");scanf("%s", &user_info.name);
+                printf("\t\t\t\t\t\t Update Email: ");scanf("%s", &user_info.email);
+                printf("\t\t\t\t\t\t NID/Passport No: %s *NID/Passport cannot be changed\n", user_info.nid);
+                printf("\t\t\t\t\t\t Update Address: ");scanf("%s", &user_info.address);
+                printf("\t\t\t\t\t\t Update Nationality: ");scanf("%s", &user_info.nationality);
 
                 fwrite(&user_info, sizeof(user_info), 1, temp_file);
 
-                printf("Profile update successful. Press any key to continue...");
+                printf("\t\t\t\t\t\t Profile update successful. Press any key to continue...");
             }
         }
     }
     else if(n==3) //User Password Update Function
     {
-        printf("::::::::::Change Password::::::::::\n\n");
+        printf("\t\t\t\t\t\t ::::::::::Change Password::::::::::\n\n");
         while(fread(&user_info, sizeof(user_info),1,main_file) == 1)
         {
             if(strcmp(user_info.username,username) != 0)
@@ -1605,15 +1696,15 @@ void update_user(int n)
             else if(strcmp(user_info.username,username) == 0)
             {
                 char up_password[100];
-                printf("Enter previous password: ");scanf("%s", &up_password);
+                printf("\t\t\t\t\t\t Enter previous password: ");scanf("%s", &up_password);
 
                 if(strcmp(user_info.password,up_password)==0)
                 {
-                    printf("Enter new password: ");scanf("%s", &user_info.password);
-                    printf("Password Update Successful. Press any key to continue...");
+                    printf("\t\t\t\t\t\t Enter new password: ");scanf("%s", &user_info.password);
+                    printf("\t\t\t\t\t\t Password Update Successful. Press any key to continue...");
                 }
                 else
-                    printf("Password does not matched. Press any key to continue...");
+                    printf("\t\t\t\t\t\t Password does not matched. Press any key to continue...");
 
                 fwrite(&user_info, sizeof(user_info), 1, temp_file);
             }
@@ -1630,7 +1721,7 @@ void update_user(int n)
 
     if(n==1)
     {
-        printf("::::::::::After Update::::::::::");
+        printf("\t\t\t\t\t\t ::::::::::After Update::::::::::");
         user_list();
     }
     else if(n==2 || n==3)
@@ -1660,13 +1751,13 @@ void delete_user()
 
     if (main_file == NULL || temp_file == NULL)
     {
-        printf("Unable to open file.\n");
+        printf("\t\t\t\t\t\t Unable to open file.\n");
         exit(1);
     }
 
     user_list();
 
-    printf("Enter username which is you want to delete: ");
+    printf("\t\t\t\t\t\t Enter username which is you want to delete: ");
     scanf("%s", &del_username);
 
     rewind(main_file);
@@ -1685,7 +1776,7 @@ void delete_user()
     remove(filename);
     rename("temp-file.tmp", filename);
 
-    printf("::::::::::After Delete %s User::::::::::", del_username);
+    printf("\t\t\t\t\t\t ::::::::::After Delete %s User::::::::::", del_username);
     user_list();
 
 }
@@ -1704,22 +1795,22 @@ void user_search(int n)
 
     if(fptr == NULL)
     {
-        printf("Error: Unable to open file.");
+        printf("\t\t\t\t\t\t Error: Unable to open file.");
         exit(1);
     }
 
     if(n==1)
     {
         char ser_user[50];
-        printf("::::::::::User Searching::::::::::\n\n");
-        printf("Enter usernames: ");scanf("%s", &ser_user);
+        printf("\t\t\t\t\t\t ::::::::::User Searching::::::::::\n\n");
+        printf("\t\t\t\t\t\t Enter usernames: ");scanf("%s", &ser_user);
 
         while(fread(&user_info, sizeof(user_info), 1, fptr) && flag==0)
         {
             if(strcmp(user_info.username,ser_user)==0)
             {
                 flag = 1;
-                printf("Username: %s", user_info.username);
+                printf("\t\t\t\t\t\t Username: %s", user_info.username);
                 printf("\t|\tName: %s", user_info.name);
                 printf("\t|\tEmail: %s", user_info.email);
                 printf("\t|\tNID: %s", user_info.nid);
@@ -1732,14 +1823,14 @@ void user_search(int n)
     }
     if(n==2)
     {
-        printf("::::::::::User Profile::::::::::\n\n");
+        printf("\t\t\t\t\t\t ::::::::::User Profile::::::::::\n\n");
 
         while(fread(&user_info, sizeof(user_info), 1, fptr) && flag==0)
         {
             if(strcmp(user_info.username,username)==0)
             {
                 flag = 1;
-                printf("Username: %s", user_info.username);
+                printf("\t\t\t\t\t\t Username: %s", user_info.username);
                 printf("\t|\tName: %s", user_info.name);
                 printf("\t|\tEmail: %s", user_info.email);
                 printf("\t|\tNID: %s", user_info.nid);
@@ -1752,7 +1843,7 @@ void user_search(int n)
     fclose(fptr);
 
     if(flag==0)
-        printf("\n\nError: User Not Found");
+        printf("\n\n\t\t\t\t\t\tError: User Not Found");
 }
 
 
@@ -1769,14 +1860,14 @@ void employee_menu(int n)
     if(n==1) //Admin Employee Menu
     {
         n=0;
-        printf("::::::::::Employee Menu::::::::::\n\n");
-        printf("1. Add Employee\n");
-        printf("2. Employee List\n");
-        printf("3. Update Employee\n");
-        printf("4. Delete Employee\n");
-        printf("5. Employee Search\n");
-        printf("6. Main Menu\n\n");
-        printf("Enter Choice: ");scanf("%d", &m);
+        printf("\t\t\t\t\t\t ::::::::::Employee Menu::::::::::\n\n");
+        printf("\t\t\t\t\t\t 1. Add Employee\n");
+        printf("\t\t\t\t\t\t 2. Employee List\n");
+        printf("\t\t\t\t\t\t 3. Update Employee\n");
+        printf("\t\t\t\t\t\t 4. Delete Employee\n");
+        printf("\t\t\t\t\t\t 5. Employee Search\n");
+        printf("\t\t\t\t\t\t 6. Main Menu\n\n");
+        printf("\t\t\t\t\t\t Enter Choice: ");scanf("%d", &m);
 
         switch(m)
         {
@@ -1786,6 +1877,7 @@ void employee_menu(int n)
             employee_menu(1);
             break;
         case 2:
+            system("cls");
             employee_list();
             getch();
             employee_menu(1);
@@ -1809,13 +1901,13 @@ void employee_menu(int n)
             main_menu(1);
             break;
         default:
-            printf("Error: invalid input");
+            printf("\t\t\t\t\t\t Error: invalid input");
         }
     }
     else if(n==2) //User Room Menu
     {
         n=0;
-        printf("::::::::::User Room Menu::::::::::\n\n");
+        printf("\t\t\t\t\t\t ::::::::::User Room Menu::::::::::\n\n");
     }
 }
 
@@ -1829,16 +1921,16 @@ void add_employee()
     system("cls");
     FILE *fptr = fopen("employee.txt", "ab+");
 
-    printf("Enter Employee ID: ");scanf("%d", &employee_info.id);
-    printf("Enter Employee Name: ");scanf("%s", &employee_info.name);
-    printf("Enter Employee Address: ");scanf("%s", &employee_info.address);
-    printf("Enter Employee Salary: "); scanf("%ld", &employee_info.salary);
+    printf("\t\t\t\t\t\t Enter Employee ID: ");scanf("%d", &employee_info.id);
+    printf("\t\t\t\t\t\t Enter Employee Name: ");scanf("%s", &employee_info.name);
+    printf("\t\t\t\t\t\t Enter Employee Address: ");scanf("%s", &employee_info.address);
+    printf("\t\t\t\t\t\t Enter Employee Salary: "); scanf("%ld", &employee_info.salary);
 
     fwrite(&employee_info, sizeof(employee_info), 1, fptr);
     fclose(fptr);
 
-    printf("\n\n\nEmployee ID: %d\t|\tEmployee Name: %s\t|\tEmployee Address: %s\t|\tEmployee Salary: %ld\n\n", employee_info.id, employee_info.name, employee_info.address, employee_info.salary);
-    printf("Employee Added Successful!\nPress any key to go Menu\n");
+    printf("\n\n\t\t\t\t\t\tEmployee ID: %d\t|\tEmployee Name: %s\t|\tEmployee Address: %s\t|\tEmployee Salary: %ld\n\n", employee_info.id, employee_info.name, employee_info.address, employee_info.salary);
+    printf("\t\t\t\t\t\t Employee Added Successful! Press any key to go Menu\n");
 }
 
 /*
@@ -1852,18 +1944,18 @@ void employee_list()
 
     if(fptr == NULL)
     {
-        printf("Error: Unable to open file.");
+        printf("\t\t\t\t\t\t Error: Unable to open file.");
         exit(1);
     }
 
-    printf("::::::::::Employee List::::::::::\n\n");
+    printf("\t\t\t\t\t\t ::::::::::Employee List::::::::::\n\n");
 
     while(fread(&employee_info, sizeof(employee_info), 1, fptr) == 1)
     {
-        printf("Employee ID: %d", employee_info.id);
-        printf("\t|\t Employee Name: %s", employee_info.name);
-        printf("\t|\t Employee Address: %s", employee_info.address);
-        printf("\t|\t Employee Salary: %d", employee_info.salary);
+        printf("\t\t\t\t\t\t Employee ID: %d", employee_info.id);
+        printf("\t|\tEmployee Name: %s", employee_info.name);
+        printf("\t|\tEmployee Address: %s", employee_info.address);
+        printf("\t|\tEmployee Salary: %d", employee_info.salary);
         printf("\n\n");
     }
     fclose(fptr);
@@ -1892,11 +1984,11 @@ void update_employee()
 
     if (main_file == NULL || temp_file == NULL)
     {
-        printf("Unable to open file.\n");
+        printf("\t\t\t\t\t\t Unable to open file.\n");
         exit(1);
     }
 
-    printf("Enter employee ID which is you want to update: ");
+    printf("\t\t\t\t\t\t Enter employee ID which is you want to update: ");
     scanf("%d", &delete_line);
 
     rewind(main_file);
@@ -1907,10 +1999,10 @@ void update_employee()
             fwrite(&employee_info, sizeof(employee_info), 1, temp_file);
         else if(employee_info.id == delete_line)
         {
-            printf("Updated Employee ID: ");scanf("%d", &employee_info.id);
-            printf("Updated Employee Name: ");scanf("%s", &employee_info.name);
-            printf("Updated Employee Address: ");scanf("%s", &employee_info.address);
-            printf("Updated Employee Salary: "); scanf("%ld", &employee_info.salary);
+            printf("\t\t\t\t\t\t Updated Employee ID: ");scanf("%d", &employee_info.id);
+            printf("\t\t\t\t\t\t Updated Employee Name: ");scanf("%s", &employee_info.name);
+            printf("\t\t\t\t\t\t Updated Employee Address: ");scanf("%s", &employee_info.address);
+            printf("\t\t\t\t\t\t Updated Employee Salary: "); scanf("%ld", &employee_info.salary);
 
             fwrite(&employee_info, sizeof(employee_info), 1, temp_file);
         }
@@ -1923,7 +2015,7 @@ void update_employee()
     rename("temp-file.tmp", filename);
 
     printf("\n\n");
-    printf("::::::::::After Update::::::::::");
+    printf("\t\t\t\t\t\t ::::::::::After Update::::::::::");
     employee_list();
 }
 
@@ -1948,13 +2040,13 @@ void delete_employee()
 
     if (main_file == NULL || temp_file == NULL)
     {
-        printf("Unable to open file.\n");
+        printf("\t\t\t\t\t\t Unable to open file.\n");
         exit(1);
     }
 
     employee_list();
 
-    printf("Enter employee ID which is you want to delete: ");
+    printf("\t\t\t\t\t\t Enter employee ID which is you want to delete: ");
     scanf("%d", &delete_line);
 
     rewind(main_file);
@@ -1973,7 +2065,7 @@ void delete_employee()
     remove(filename);
     rename("temp-file.tmp", filename);
 
-    printf("::::::::::After Delete %d No Employee ID::::::::::", delete_line);
+    printf("\t\t\t\t\t\t ::::::::::After Delete %d No Employee ID::::::::::", delete_line);
     employee_list();
 }
 
@@ -1997,11 +2089,11 @@ void employee_search()
 
     if (fptr == NULL)
     {
-        printf("\n\nUnable to open file.\n");
+        printf("\n\n\t\t\t\t\t\tUnable to open file.\n");
         exit(1);
     }
 
-    printf("Enter employee ID: ");
+    printf("\t\t\t\t\t\t Enter employee ID: ");
     scanf("%d", &num);
 
     printf("\n\n");
@@ -2011,15 +2103,15 @@ void employee_search()
         if(employee_info.id == num)
         {
             flag = 1;
-            printf("Employee ID: %d", employee_info.id);
-            printf("\t|\t Employee Name: %s", employee_info.name);
-            printf("\t|\t Employee Address: %s", employee_info.address);
-            printf("\t|\t Employee Salary: %d", employee_info.salary);
+            printf("\t\t\t\t\t\t Employee ID: %d", employee_info.id);
+            printf("\t|\tEmployee Name: %s", employee_info.name);
+            printf("\t|\tEmployee Address: %s", employee_info.address);
+            printf("\t|\tEmployee Salary: %d", employee_info.salary);
             printf("\n\n");
         }
     }
     if(flag==0)
-        printf("\nNot Found");
+        printf("\n\t\t\t\t\t\tNot Found");
 
     fclose(fptr);
 }
@@ -2041,14 +2133,14 @@ void order_search(int n)
 
     if (fptr == NULL)
     {
-        printf("\n\nUnable to open file.\n");
+        printf("\n\n\t\t\t\t\t\tUnable to open file.\n");
         exit(1);
     }
 
     if(n==0)
     {
-        printf("::::::::::Search Food by Order ID::::::::::\n\n");
-        printf("Enter Order ID: ");
+        printf("\t\t\t\t\t\t ::::::::::Search Food by Order ID::::::::::\n\n");
+        printf("\t\t\t\t\t\t Enter Order ID: ");
         scanf("%d", &num);
         printf("\n\n");
 
@@ -2073,7 +2165,7 @@ void order_search(int n)
     }
     else if(n==1)
     {
-        printf("::::::::::Confirmed Order List::::::::::\n\n");
+        printf("\t\t\t\t\t\t ::::::::::Confirmed Order List::::::::::\n\n");
         while(fread(&order_info, sizeof(order_info),1,fptr) == 1)
         {
             if(order_info.or_status == 1)
@@ -2095,7 +2187,7 @@ void order_search(int n)
     }
     else if(n==2)
     {
-        printf("::::::::::Pending Order List::::::::::\n\n");
+        printf("\t\t\t\t\t\t ::::::::::Pending Order List::::::::::\n\n");
         while(fread(&order_info, sizeof(order_info),1,fptr) == 1)
         {
             if(order_info.or_status == 0)
@@ -2119,7 +2211,7 @@ void order_search(int n)
     fclose(fptr);
 
     if(flag==0)
-        printf("\nNot Order Found");
+        printf("\n\t\t\t\t\t\tNot Order Found");
 
     getch();
     main_menu(1);
@@ -2142,11 +2234,11 @@ void user_order_history()
 
     if (fptr == NULL)
     {
-        printf("\n\nUnable to open file.\n");
+        printf("\n\n\t\t\t\t\t\tUnable to open file.\n");
         exit(1);
     }
 
-    printf("::::::::::Order History::::::::::\n\n");
+    printf("\t\t\t\t\t\t ::::::::::Order History::::::::::\n\n");
     while(fread(&order_info, sizeof(order_info),1,fptr) == 1)
     {
         if(strcmp(order_info.or_user,username)==0)
@@ -2168,7 +2260,7 @@ void user_order_history()
     fclose(fptr);
 
     if(flag==0)
-        printf("\nNot Order Found");
+        printf("\n\t\t\t\t\t\tNot Order Found");
 
     getch();
     main_menu(2);
@@ -2194,7 +2286,7 @@ void order_room(int id)
 
     if (main_file == NULL || temp_or_file == NULL)
     {
-        printf("Unable to open file.\n");
+        printf("\t\t\t\t\t\t Unable to open file.\n");
         exit(1);
     }
 
@@ -2204,11 +2296,11 @@ void order_room(int id)
         {
             flag=1;
 
-            printf("Check ID Date(D-M-Y): ");scanf("%s", &order_info.in_date);
-            printf("Check Out Date (D-M-Y): ");scanf("%s", &order_info.out_date);
-            printf("How Many Rooms: ");scanf("%d", &order_info.item_count);
-            printf("How Many Adults: ");scanf("%d", &order_info.adult_count);
-            printf("How Many Children: ");scanf("%d", &order_info.children_count);
+            printf("\t\t\t\t\t\t Check ID Date(D-M-Y): ");scanf("%s", &order_info.in_date);
+            printf("\t\t\t\t\t\t Check Out Date (D-M-Y): ");scanf("%s", &order_info.out_date);
+            printf("\t\t\t\t\t\t How Many Rooms: ");scanf("%d", &order_info.item_count);
+            printf("\t\t\t\t\t\t How Many Adults: ");scanf("%d", &order_info.adult_count);
+            printf("\t\t\t\t\t\t How Many Children: ");scanf("%d", &order_info.children_count);
 
             strcpy(order_info.or_user, username);
             order_info.item_id=room_info.no;
@@ -2230,7 +2322,7 @@ void order_room(int id)
     else
     {
         remove("temp-order-file.tmp");
-        printf("%d Room not Available\n\n", id);
+        printf("\t\t\t\t\t\t %d Room not Available\n\n", id);
         getch();
         room_menu(2);
     }
@@ -2256,7 +2348,7 @@ void order_food(int id)
 
     if (main_file == NULL || temp_or_file == NULL)
     {
-        printf("Unable to open file.\n");
+        printf("\t\t\t\t\t\t Unable to open file.\n");
         exit(1);
     }
 
@@ -2266,7 +2358,7 @@ void order_food(int id)
         {
             flag=1;
 
-            printf("Food Quantity: ");scanf("%d", &order_info.item_count);
+            printf("\t\t\t\t\t\t Food Quantity: ");scanf("%d", &order_info.item_count);
 
             strcpy(order_info.or_user, username);
             order_info.item_id=food_info.code;
@@ -2290,7 +2382,7 @@ void order_food(int id)
     else
     {
         remove("temp-order-file.tmp");
-        printf("%d Food not Available\n\n", id);
+        printf("\t\t\t\t\t\t %d Food not Available\n\n", id);
         getch();
         food_menu(2);
     }
@@ -2306,11 +2398,11 @@ void order_details(int n)
     FILE *fptr;
     fptr = fopen("temp-order-file.tmp", "rb");
 
-    printf("::::::::::Order Details::::::::::\n\n");
+    printf("\t\t\t\t\t\t ::::::::::Order Details::::::::::\n\n");
 
     if (fptr == NULL)
     {
-        printf("\n\nUnable to open file.\n");
+        printf("\n\n\t\t\t\t\t\tUnable to open file.\n");
         exit(1);
     }
 
@@ -2319,16 +2411,16 @@ void order_details(int n)
         while(fread(&order_info, sizeof(order_info),1,fptr)==1)
         {
             item_id = order_info.item_id;
-            printf("Room No: %d\n", order_info.item_id);
-            printf("Room Name: %s\n", order_info.or_name);
-            printf("Room Type: %s\n", order_info.or_type);
-            printf("Check in date: %s\n", order_info.in_date);
-            printf("Check out date: %s\n", order_info.out_date);
-            printf("Rooms: %d\n", order_info.item_count);
-            printf("Adult: %d\n", order_info.adult_count);
-            printf("Children: %d\n", order_info.children_count);
-            printf("Total price: %ld\n", order_info.or_price);
-            //printf("Username: %s", order_info.or_user);
+            printf("\t\t\t\t\t\t Room No: %d\n", order_info.item_id);
+            printf("\t\t\t\t\t\t Room Name: %s\n", order_info.or_name);
+            printf("\t\t\t\t\t\t Room Type: %s\n", order_info.or_type);
+            printf("\t\t\t\t\t\t Check in date: %s\n", order_info.in_date);
+            printf("\t\t\t\t\t\t Check out date: %s\n", order_info.out_date);
+            printf("\t\t\t\t\t\t Rooms: %d\n", order_info.item_count);
+            printf("\t\t\t\t\t\t Adult: %d\n", order_info.adult_count);
+            printf("\t\t\t\t\t\t Children: %d\n", order_info.children_count);
+            printf("\t\t\t\t\t\t Total price: %ld\n", order_info.or_price);
+            //printf("\t\t\t\t\t\t Username: %s", order_info.or_user);
 
             printf("\n\n");
         }
@@ -2338,12 +2430,12 @@ void order_details(int n)
         while(fread(&order_info, sizeof(order_info),1,fptr)==1)
         {
             item_id = order_info.item_id;
-            printf("Food Code: %d\n", order_info.item_id);
-            printf("Food Name: %s\n", order_info.or_name);
-            printf("Food Type: %s\n", order_info.or_type);
-            printf("Food Quantity: %d\n", order_info.item_count);
-            printf("Total price: %ld\n", order_info.or_price);
-            //printf("Username: %s", order_info.or_user);
+            printf("\t\t\t\t\t\t Food Code: %d\n", order_info.item_id);
+            printf("\t\t\t\t\t\t Food Name: %s\n", order_info.or_name);
+            printf("\t\t\t\t\t\t Food Type: %s\n", order_info.or_type);
+            printf("\t\t\t\t\t\t Food Quantity: %d\n", order_info.item_count);
+            printf("\t\t\t\t\t\t Total price: %ld\n", order_info.or_price);
+            //printf("\t\t\t\t\t\t Username: %s", order_info.or_user);
 
             printf("\n\n");
         }
@@ -2365,12 +2457,12 @@ void payment(int n)
     if(n==1) order_details(1); //Room Order Details
     else if(n==2) order_details(2); //Food Order Details
 
-    printf("::::::::::Payment options::::::::::\n\n");
+    printf("\t\t\t\t\t\t ::::::::::Payment options::::::::::\n\n");
     int m;
-    printf("1. Visa/Credit/MasterCard\n");
-    printf("2. Bkash/Rocket\n");
-    printf("3. Cash\n\n");
-    printf("Enter choice: ");scanf("%d", &m);
+    printf("\t\t\t\t\t\t 1. Visa/Credit/MasterCard\n");
+    printf("\t\t\t\t\t\t 2. Bkash/Rocket\n");
+    printf("\t\t\t\t\t\t 3. Cash\n\n");
+    printf("\t\t\t\t\t\t Enter choice: ");scanf("%d", &m);
 
     switch(m)
     {
@@ -2382,10 +2474,10 @@ void payment(int n)
         break;
     case 3:
         thanks(n, 0);
-        printf("Pay in Cash\n");
+        printf("\t\t\t\t\t\t Pay in Cash\n");
         break;
     default:
-        printf("Error! Invalid Input..");
+        printf("\t\t\t\t\t\t Error! Invalid Input..");
         getch();
         main_menu(2);
     }
@@ -2404,13 +2496,13 @@ void card(int n)
 
     char c;
 
-    printf("::::::::::Payment > Card Information::::::::::\n\n");
-    printf("Enter Card No\t\t: ");scanf("%d", &payment_info.no);
+    printf("\t\t\t\t\t\t ::::::::::Payment > Card Information::::::::::\n\n");
+    printf("\t\t\t\t\t\t Enter Card No\t\t: ");scanf("%d", &payment_info.no);
 
-    printf("Enter Card Expire Date\t: ");scanf("%s", &payment_info.expire);
-    printf("Enter CVC No\t\t: ");scanf("%d", &payment_info.code);
+    printf("\t\t\t\t\t\t Enter Card Expire Date\t: ");scanf("%s", &payment_info.expire);
+    printf("\t\t\t\t\t\t Enter CVC No\t\t: ");scanf("%d", &payment_info.code);
 
-    printf("Confirm Payment (Y/N): ");scanf("%s", &c);
+    printf("\t\t\t\t\t\t Confirm Payment (Y/N): ");scanf("%s", &c);
 
     system("CLS");
 
@@ -2420,7 +2512,7 @@ void card(int n)
     }
     else
     {
-        printf("Payment Deny..............");
+        printf("\t\t\t\t\t\t Payment Deny..............");
         main_menu(2);
     }
 }
@@ -2438,10 +2530,10 @@ void m_banking(int n)
 
     char c;
 
-    printf("::::::::::Payment > Mobile Banking Information::::::::::\n\n");
-    printf("Enter Your Mobile Banking (Bkash/Rocket) Number: ");scanf("%d", &payment_info.no);
-    printf("Enter Your PIN: ");scanf("%d", &payment_info.code);
-    printf("Confirm Payment (Y/N): ");scanf("%s", &c);
+    printf("\t\t\t\t\t\t ::::::::::Payment > Mobile Banking Information::::::::::\n\n");
+    printf("\t\t\t\t\t\t Enter Your Mobile Banking (Bkash/Rocket) Number: ");scanf("%d", &payment_info.no);
+    printf("\t\t\t\t\t\t Enter Your PIN: ");scanf("%d", &payment_info.code);
+    printf("\t\t\t\t\t\t Confirm Payment (Y/N): ");scanf("%s", &c);
 
     system("CLS");
 
@@ -2450,7 +2542,7 @@ void m_banking(int n)
         thanks(n, 1);
     }
     else
-        printf("Payment Deny..............\n");
+        printf("\t\t\t\t\t\t Payment Deny..............\n");
 }
 
 /*
@@ -2462,12 +2554,12 @@ void thanks(int n, int m)
 {
     system("cls");
 
-    printf("                ##########  ##     ##      ##      ###    ##  ##   ##   #####                    \n");
-    printf("                    ##      ##     ##     ####     ## #   ##  ## ##    #                         \n");
-    printf("                    ##      #########    ##  ##    ##  #  ##  ###       #####                    \n");
-    printf("                    ##      ##     ##   ## ## ##   ##   # ##  ## ##          #                   \n");
-    printf("                    ##      ##     ##  ##      ##  ##    ###  ##   ##   #####                    \n\n");
-    printf("##############################################################################################   \n\n");
+    printf("\t\t\t\t\t\t                 ##########  ##     ##      ##      ###    ##  ##   ##   #####                    \n");
+    printf("\t\t\t\t\t\t                     ##      ##     ##     ####     ## #   ##  ## ##    #                         \n");
+    printf("\t\t\t\t\t\t                     ##      #########    ##  ##    ##  #  ##  ###       #####                    \n");
+    printf("\t\t\t\t\t\t                     ##      ##     ##   ## ## ##   ##   # ##  ## ##          #                   \n");
+    printf("\t\t\t\t\t\t                     ##      ##     ##  ##      ##  ##    ###  ##   ##   #####                    \n\n");
+    printf("\t\t\t\t\t\t ##############################################################################################   \n\n");
 
     if(n==1) order_details(1); //Room Order Details
     else if(n==2) order_details(2); //Food Order Details
@@ -2506,7 +2598,7 @@ void update_order(int n)
 
     if (main_file == NULL || temp_file == NULL)
     {
-        printf("Unable to open file.\n");
+        printf("\t\t\t\t\t\t Unable to open file.\n");
         exit(1);
     }
 
@@ -2546,7 +2638,7 @@ void order_room_update(int n)
 
     if (fptr==NULL || fptr_temp1==NULL)
     {
-        printf("Error: Unable to open file\n\n");
+        printf("\t\t\t\t\t\t Error: Unable to open file\n\n");
         exit(1);
     }
 
@@ -2590,11 +2682,11 @@ void update_order_status(int n)
 
     if (main_file == NULL || temp_file == NULL)
     {
-        printf("Unable to open file.\n");
+        printf("\t\t\t\t\t\t Unable to open file.\n");
         exit(1);
     }
 
-    printf("Enter order ID: ");scanf("%d", &count);
+    printf("\t\t\t\t\t\t Enter order ID: ");scanf("%d", &count);
 
     rewind(main_file);
 
@@ -2617,6 +2709,6 @@ void update_order_status(int n)
     remove(filename);
     rename("temp-file.tmp", filename);
 
-    printf("\n\n%d No Order Confirmed. Press any key to continue.....", count);
+    printf("\n\n\t\t\t\t\t\t%d No Order Confirmed. Press any key to continue.....", count);
 }
 
