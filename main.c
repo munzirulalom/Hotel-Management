@@ -156,8 +156,9 @@ void top()
 void contact()
 {
     system("CLS");
-    printf("\n\n\t\t\t\t\t\t");
-    printf("\t\t\t\t\t\t :::::::::: Hotel Management System ::::::::::\n\n");
+    top();
+    printf("\n\n");
+    printf("\t\t\t\t\t :::::::::: Hotel Management System ::::::::::\n\n");
     printf("\t\t\t\t\t\t Name: D.M. Ajmain Shariar\tID: 19202103308\t\tEmail: ajmainshariar77@gmail.com\n");
     printf("\t\t\t\t\t\t Name: MD Mahabub Morshed\tID: 19202103298\t\tEmail: mdmahabubmorshed876@gmail.com\n");
     printf("\t\t\t\t\t\t Name: Munzirul Alom\t\tID: 19202103303\t\tEmail: cse.alomb008@gmail.com\n");
@@ -591,6 +592,7 @@ void dis_hotel_info()
 void room_menu(int n)
 {
     system("cls");
+    top();
     int m;
 
     if(n==1) //Admin Room Menu
@@ -758,7 +760,7 @@ void room_list()
 void update_room()
 {
     system("cls");
-
+    top();
     room_list();
 
     FILE *main_file;
@@ -817,6 +819,9 @@ void update_room()
 */
 void delete_room()
 {
+    system("cls");
+    top();
+
     FILE *main_file;
     FILE *temp_file;
 
