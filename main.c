@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<conio.h>
-#include <stdlib.h>
+#include<stdlib.h>
 #include<string.h>
 
 char username[50];
@@ -130,11 +130,6 @@ void thanks();
 void update_order();
 void order_room_update();
 
-/*
-    ==================================================================================
-                                Contact Function
-    ==================================================================================
-*/
 
 void top()
 {
@@ -153,6 +148,11 @@ void top()
     printf("\t\t\t\t\t\t\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1 \n\n");
 }
 
+/*
+    ==================================================================================
+                                Contact Function
+    ==================================================================================
+*/
 void contact()
 {
     system("CLS");
@@ -529,7 +529,6 @@ void hotel_info(int n)
         exit(1);
     }
 
-    rewind(fptr);
 
     while(fread(&hotel_inf, sizeof(hotel_inf), 1, fptr))
     {
@@ -782,7 +781,6 @@ void update_room()
     printf("\t\t\t\t\t\t Replace Room No: ");
     scanf("%d", &delete_line);
 
-    rewind(main_file);
 
     while(fread(&add, sizeof(add),1,main_file) == 1)
     {
@@ -843,7 +841,6 @@ void delete_room()
     printf("\t\t\t\t\t\t Delete Room No: ");
     scanf("%d", &delete_line);
 
-    rewind(main_file);
 
     while(fread(&add, sizeof(add),1,main_file) == 1)
     {
@@ -873,6 +870,7 @@ void delete_room()
 void room_search(int n, int autho)
 {
     system("cls");
+    top();
 
     char filename[]="room.txt";
 
@@ -1056,6 +1054,8 @@ void room_search(int n, int autho)
 void food_menu(int n)
 {
     system("cls");
+    top();
+
     int m=0;
 
     if(n==1) //Admin Food Menu
@@ -1079,6 +1079,7 @@ void food_menu(int n)
             break;
         case 2:
             system("cls");
+            top();
             food_list();
             getch();
             food_menu(1);
@@ -1095,7 +1096,10 @@ void food_menu(int n)
             break;
         case 5:
             system("cls");
+            top();
+
             m=0;
+            printf("\t\t\t\t\t\t :::::::::: Admin Food Search ::::::::::\n\n");
             printf("\t\t\t\t\t\t 1. Search by Food ID\n");
             printf("\t\t\t\t\t\t 2. Breakfast List\n");
             printf("\t\t\t\t\t\t 3. Lunch List\n");
@@ -1243,7 +1247,6 @@ void update_food()
     printf("\t\t\t\t\t\t Enter food code which is you want to update: ");
     scanf("%d", &delete_line);
 
-    rewind(main_file);
 
     while(fread(&food_info, sizeof(food_info),1,main_file) == 1)
     {
@@ -1301,7 +1304,6 @@ void delete_food()
     printf("\t\t\t\t\t\t Enter food code which is you want to delete: ");
     scanf("%d", &delete_line);
 
-    rewind(main_file);
 
     while(fread(&food_info, sizeof(food_info),1,main_file) == 1)
     {
@@ -1331,6 +1333,8 @@ void delete_food()
 void food_search(int n, int autho)
 {
     system("cls");
+    top();
+
     char filename[]="food.txt";
 
     FILE *fptr;
@@ -1516,6 +1520,8 @@ void food_search(int n, int autho)
 void user_menu(int n)
 {
     system("cls");
+    top();
+
     int m;
 
     if(n==1) //Admin User Menu
@@ -1533,6 +1539,7 @@ void user_menu(int n)
         {
         case 1:
             system("cls");
+            top();
             user_list();
             getch();
             user_menu(1);
@@ -1626,6 +1633,7 @@ void user_list()
 void update_user(int n)
 {
     system("cls");
+    top();
 
     if(n==1)
         user_list();
@@ -1643,7 +1651,6 @@ void update_user(int n)
         printf("\t\t\t\t\t\t Unable to open file.\n");
         exit(1);
     }
-    rewind(main_file);
 
     if(n==1) //Admin User Update Function
     {
@@ -1744,6 +1751,7 @@ void update_user(int n)
 void delete_user()
 {
     system("cls");
+    top();
 
     FILE *main_file;
     FILE *temp_file;
@@ -1765,7 +1773,6 @@ void delete_user()
     printf("\t\t\t\t\t\t Enter username which is you want to delete: ");
     scanf("%s", &del_username);
 
-    rewind(main_file);
 
     while(fread(&user_info, sizeof(user_info),1,main_file) == 1)
     {
@@ -1794,6 +1801,8 @@ void delete_user()
 void user_search(int n)
 {
     system("cls");
+    top();
+
     FILE *fptr = fopen("user.txt", "rb");
 
     int flag=0;
@@ -1860,6 +1869,8 @@ void user_search(int n)
 void employee_menu(int n)
 {
     system("cls");
+    top();
+
     int m=0;
 
     if(n==1) //Admin Employee Menu
@@ -1883,6 +1894,7 @@ void employee_menu(int n)
             break;
         case 2:
             system("cls");
+            top();
             employee_list();
             getch();
             employee_menu(1);
@@ -1924,6 +1936,8 @@ void employee_menu(int n)
 void add_employee()
 {
     system("cls");
+    top();
+
     FILE *fptr = fopen("employee.txt", "ab+");
 
     printf("\t\t\t\t\t\t Enter Employee ID: ");scanf("%d", &employee_info.id);
@@ -1975,6 +1989,7 @@ void employee_list()
 void update_employee()
 {
     system("cls");
+    top();
 
     employee_list();
 
@@ -1996,7 +2011,6 @@ void update_employee()
     printf("\t\t\t\t\t\t Enter employee ID which is you want to update: ");
     scanf("%d", &delete_line);
 
-    rewind(main_file);
 
     while(fread(&employee_info, sizeof(employee_info),1,main_file) == 1)
     {
@@ -2033,6 +2047,7 @@ void update_employee()
 void delete_employee()
 {
     system("cls");
+    top();
 
     FILE *main_file;
     FILE *temp_file;
@@ -2054,7 +2069,6 @@ void delete_employee()
     printf("\t\t\t\t\t\t Enter employee ID which is you want to delete: ");
     scanf("%d", &delete_line);
 
-    rewind(main_file);
 
     while(fread(&employee_info, sizeof(employee_info),1,main_file) == 1)
     {
@@ -2082,6 +2096,7 @@ void delete_employee()
 void employee_search()
 {
     system("cls");
+    top();
 
     employee_list();printf("\n\n");
 
@@ -2129,6 +2144,8 @@ void employee_search()
 void order_search(int n)
 {
     system("cls");
+    top();
+
     char filename[]="order.txt";
 
     FILE *fptr;
@@ -2230,6 +2247,8 @@ void order_search(int n)
 void user_order_history()
 {
     system("cls");
+    top();
+
     char filename[]="order.txt";
 
     FILE *fptr;
@@ -2341,6 +2360,7 @@ void order_room(int id)
 void order_food(int id)
 {
     system("cls");
+    top();
 
     FILE *main_file;
     FILE *temp_or_file;
@@ -2647,7 +2667,6 @@ void order_room_update(int n)
         exit(1);
     }
 
-    rewind(fptr);
 
     while(fread(&room_info, sizeof(room_info), 1, fptr) == 1)
     {
@@ -2693,7 +2712,6 @@ void update_order_status(int n)
 
     printf("\t\t\t\t\t\t Enter order ID: ");scanf("%d", &count);
 
-    rewind(main_file);
 
     while(fread(&order_info, sizeof(order_info),1,main_file) == 1)
     {
@@ -2716,4 +2734,3 @@ void update_order_status(int n)
 
     printf("\n\n\t\t\t\t\t\t%d No Order Confirmed. Press any key to continue.....", count);
 }
-
